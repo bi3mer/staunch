@@ -8,8 +8,7 @@ EXAM_FILES = $(wildcard ../Exam/*.c)
 FOUNDATION_FILES = $(wildcard *.c)
 
 test: $(FOUNDATION_FILES) $(EXAM_FILES)
-	$(CC) $(CFLAGS) $(FOUNDATION_FILES) $(EXAM_FILES) -o test
-	@echo
+	@$(CC) $(CFLAGS) $(FOUNDATION_FILES) $(EXAM_FILES) -o test
 	@./test
 	@rm test
 

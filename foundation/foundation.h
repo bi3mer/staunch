@@ -16,9 +16,9 @@ typedef unsigned int uint;
 ///////////////////////////////////////////////////////////////////////////////
 /// General Math
 // Returns true if values are approximately similar, based on range for 32 bit float
-extern bool f_approximately_2f(const float a, const float b, const float range);
+extern bool f_approximately_f(const float a, const float b, const float range);
 // Returns true if values are approximately similar, based on range for 32 bit double
-extern bool f_approximately_2d(const double a, const double b, const double range);
+extern bool f_approximately_d(const double a, const double b, const double range);
 // Computes square root of a 32 bit float
 extern float f_sqrt_f(const float);
 // Computes square root of a 64 bit double
