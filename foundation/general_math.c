@@ -1,5 +1,15 @@
 #include "foundation.h"
 
+bool f_approximately_2f(const float a, const float b, const float range)
+{
+    return a <= b + range && a >= b - range;
+}
+
+bool f_approximately_2d(const double a, const double b, const double range)
+{
+    return a <= b + range && a >= b - range;
+}
+
 float f_sqrt_f(const float number)
 {
     int i;
@@ -16,7 +26,7 @@ float f_sqrt_f(const float number)
     return number * y;
 }
 
-double d_sqrt_d(const double number)
+double f_sqrt_d(const double number)
 {
     int i;
     double x, y;
