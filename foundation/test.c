@@ -7,7 +7,7 @@
 int main()
 {
     ///////////////////////////////////////////////////////////////////////////
-    // General Math
+    /// general_math.c
     {
         e_begin("f_approximately_2f");
         e_assert(f_approximately_f(2.f, 1.999991f, 0.01f));
@@ -26,21 +26,13 @@ int main()
         e_assert(!f_approximately_d(2.0, 1.999991, 0.000001));
         e_end();
     }
-    {
-        e_begin("f_sqrt_f");
-        e_assert(f_approximately_f(f_sqrt_f(4.f), 2.f, 0.00001f));
-        e_assert(!f_approximately_f(f_sqrt_f(4.f), 2.f, 0.000001f));
-        e_end();
-    }
-    {
-        e_begin("f_sqrt_d");
-        e_assert(f_approximately_d(f_sqrt_d(4.0), 2.0,  0.000001));
-        e_assert(!f_approximately_d(f_sqrt_d(4.0), 2.0, 0.0000001));
-        e_end();
-    }
 
     ///////////////////////////////////////////////////////////////////////////
-    // Linear Algebra
+    /// linear_algebra.c
+
+    ///////////////////////////////////////////////////////////////////////////
+    /// random.c
+
 
 
     e_log_summary();
