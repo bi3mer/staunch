@@ -21,21 +21,89 @@ typedef uint64_t u64;
 
 ///////////////////////////////////////////////////////////////////////////////
 //// General Math
-// Get minimum of a or b
-#define f_min(a,b) (((a) < (b)) ? (a) : (b))
-// Get maximum of a or b
-#define f_max(a,b) (((a) < (b)) ? (a) : (b))
-// Clamp value between min and max
-#define f_clamp(min, value, max) \
-    (((value) < (min)) ? (min) : \
-     ((max) < (value)) ? (max) : \
-     (value))
+/// square root
+// ----------------------------------------------------------------------------
+// @NOTE: There is a good chance I end up replacing sqrt, which is why I have
+//        added a wrapper
+// ----------------------------------------------------------------------------
+// Return square root of a 32 bit float
+#define f_sqrt_f(n) sqrtf(n)
+// Return square root of a 64 bit double
+#define f_sqrt_d(n) sqrt(n)
 
-//-----------------------------------------------------------------------------
-// I can't decide, but I feel like these macros are the wrong call, and I
-// should, instead, implement each one for better type safety.
-//-----------------------------------------------------------------------------
+/// Minimum
+// Get minimum of a or b for 8 bit integer
+extern i8 f_min_i8(const i8 a, const i8 b);
+// Get minimum of a or b for 16 bit integer
+extern i16 f_min_i16(const i16 a, const i16 b);
+// Get minimum of a or b for 32 bit integer
+extern i32 f_min_i32(const i32 a, const i32 b);
+// Get minimum of a or b for 64 bit integer
+extern i64 f_min_i64(const i64 a, const i64 b);
 
+// Get minimum of a or b for 8 bit integer
+extern u8 f_min_u8(const u8 a, const u8 b);
+// Get uinimum of a or b for 16 bit integer
+extern u16 f_min_u16(const u16 a, const u16 b);
+// Get uinimum of a or b for 32 bit integer
+extern u32 f_min_u32(const u32 a, const u32 b);
+// Get minimum of a or b for 64 bit integer
+extern u64 f_min_u64(const u64 a, const u64 b);
+
+// get minimum of a or b for float
+extern float f_min_f(const float a, const float b);
+// get minimum of a or b for double
+extern double f_min_d(const double a, const double b);
+
+/// Maximum
+// Get minimum of a or b for 8 bit integer
+extern i8 f_max_i8(const i8 a, const i8 b);
+// Get minimum of a or b for 16 bit integer
+extern i16 f_max_i16(const i16 a, const i16 b);
+// Get minimum of a or b for 32 bit integer
+extern i32 f_max_i32(const i32 a, const i32 b);
+// Get minimum of a or b for 64 bit integer
+extern i64 f_max_i64(const i64 a, const i64 b);
+
+// Get minimum of a or b for 8 bit integer
+extern u8 f_max_u8(const u8 a, const u8 b);
+// Get uinimum of a or b for 16 bit integer
+extern u16 f_max_u16(const u16 a, const u16 b);
+// Get uinimum of a or b for 32 bit integer
+extern u32 f_max_u32(const u32 a, const u32 b);
+// Get minimum of a or b for 64 bit integer
+extern u64 f_max_u64(const u64 a, const u64 b);
+
+// get minimum of a or b for float
+extern float f_max_f(const float a, const float b);
+// get minimum of a or b for double
+extern double f_max_d(const double a, const double b);
+
+/// Clamp
+// clamp val between min and max for i8
+extern i8 f_clamp_i8(const i8 min, const i8 val, const i8 max);
+// clamp val between min and max for i16
+extern i16 f_clamp_i16(const i16 min, const i16 val, const i16 max);
+// clamp val between min and max for i32
+extern i32 f_clamp_i32(const i32 min, const i32 val, const i32 max);
+// clamp val between min and max for i64
+extern i64 f_clamp_i64(const i64 min, const i64 val, const i64 max);
+
+// clamp val between min and max for u8
+extern u8 f_clamp_u8(const u8 min, const u8 val, const u8 max);
+// clamp val between min and max for u16
+extern u16 f_clamp_u16(const u16 min, const u16 val, const u16 max);
+// clamp val between min and max for u32
+extern u32 f_clamp_u32(const u32 min, const u32 val, const u32 max);
+// clamp val between min and max for u64
+extern u64 f_clamp_u64(const u64 min, const u64 val, const u64 max);
+
+// clamp val between min and max for float
+extern float f_clamp_f(const float min, const float val, const float max);
+// clamp val between min and max for double
+extern double f_clamp_d(const double min, const double val, const double max);
+
+/// approximately
 // Returns true if values are approximately similar, based on range for 32 bit float
 extern bool f_approximately_f(const float a, const float b, const float range);
 // Returns true if values are approximately similar, based on range for 32 bit double
@@ -51,7 +119,6 @@ extern double f_vec2d_length(const double vec[2]);
 extern float f_vec3f_length(const float vec[3]);
 // Computes length of 3d vector with 64 bit double
 extern double f_vec3d_length(const double vec[3]);
-
 
 // Computes squared length of 2d vector with 32 bit float
 extern float f_vec2f_length_squared(const float vec[2]);
@@ -82,7 +149,10 @@ extern double f_vec3d_dot(const double vec1[3], const float vec2[3]);
 // the basic API for different number types is reasonable, I think.
 //-----------------------------------------------------------------------------
 // Seed random number generation
-extern void f_rand_seed();
+extern void f_rand_init(i64 seed);
+
+// generate random bool (true or false)
+extern bool f_rand_bool();
 
 // generate random i8 between a minimum and maximum
 extern i8 f_rand_i8(const i8 min, const i8 max);
