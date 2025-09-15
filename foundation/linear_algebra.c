@@ -23,6 +23,29 @@ double f_vec3d_length(const double vec[3])
     return sqrt(vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2]);
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// Length squared of a vector
+float f_vec2f_length_squared(const float vec[2])
+{
+    return vec[0]*vec[0] + vec[1]*vec[1];
+}
+
+double f_vec2d_length_squared(const double vec[2])
+{
+    return vec[0]*vec[0] + vec[1]*vec[1];
+}
+
+float f_vec3f_length_squared(const float vec[3])
+{
+    return vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2];
+}
+
+double f_vec3d_length_squared(const double vec[3])
+{
+    return vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2];
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Dot product
 float f_vec2f_dot(const float vec1[2], const float vec2[2])
