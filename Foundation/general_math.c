@@ -16,32 +16,32 @@ bool f_approximately_d(const double a, const double b, const double range)
 
 ///////////////////////////////////////////////////////////////////////////////
 // min
-i8 f_min_i8(const i8 a, const i8 b) { return a < b ? a : b; }
+i8 f_min_i8(const i8 a, const i8 b)     { return a < b ? a : b; }
 i16 f_min_i16(const i16 a, const i16 b) { return a < b ? a : b; }
 i32 f_min_i32(const i32 a, const i32 b) { return a < b ? a : b; }
 i64 f_min_i64(const i64 a, const i64 b) { return a < b ? a : b; }
 
-u8 f_min_u8(const u8 a, const u8 b) { return a < b ? a : b; }
+u8 f_min_u8(const u8 a, const u8 b)     { return a < b ? a : b; }
 u16 f_min_u16(const u16 a, const u16 b) { return a < b ? a : b; }
 u32 f_min_u32(const u32 a, const u32 b) { return a < b ? a : b; }
 u64 f_min_u64(const u64 a, const u64 b) { return a < b ? a : b; }
 
-float f_min_f(const float a, const float b) { return a < b ? a : b; }
+float f_min_f(const float a, const float b)    { return a < b ? a : b; }
 double f_min_d(const double a, const double b) { return a < b ? a : b; }
 
 ///////////////////////////////////////////////////////////////////////////////
 // max
-i8 f_max_i8(const i8 a, const i8 b) { return a > b ? a : b; }
+i8 f_max_i8(const i8 a, const i8 b)     { return a > b ? a : b; }
 i16 f_max_i16(const i16 a, const i16 b) { return a > b ? a : b; }
 i32 f_max_i32(const i32 a, const i32 b) { return a > b ? a : b; }
 i64 f_max_i64(const i64 a, const i64 b) { return a > b ? a : b; }
 
-u8 f_max_u8(const u8 a, const u8 b) { return a > b ? a : b; }
+u8 f_max_u8(const u8 a, const u8 b)     { return a > b ? a : b; }
 u16 f_max_u16(const u16 a, const u16 b) { return a > b ? a : b; }
 u32 f_max_u32(const u32 a, const u32 b) { return a > b ? a : b; }
 u64 f_max_u64(const u64 a, const u64 b) { return a > b ? a : b; }
 
-float f_max_f(const float a, const float b) { return a > b ? a : b; }
+float f_max_f(const float a, const float b)    { return a > b ? a : b; }
 double f_max_d(const double a, const double b) { return a > b ? a : b; }
 
 ///////////////////////////////////////////////////////////////////////////////

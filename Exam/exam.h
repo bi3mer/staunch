@@ -9,5 +9,6 @@ extern void e_end();
 extern void e_log_summary();
 
 #define e_assert(b) _e_assert(b, __FILE__, __LINE__)
+#define assert(b) _e_assert(b, __FILE__, __LINE) // redefine assert
 
 #endif
