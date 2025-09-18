@@ -1,0 +1,29 @@
+CC = gcc
+CFLAGS = -std=c11 -I../Exam -I../Foundation -I.
+LDFLAGS = -lm
+
+# Find all .c files
+EXAM_FILES = $(wildcard ../Exam/*.c)
+FOUNDATION_FILES = $(wildcard ../Foundation/*.c)
+TEST_FILES = $(wildcard test_*.c)
+
+# Default target runs all tests
+test: $(TEST_FILES:.c=.run)
+
+# Pattern rule to compile and run each test file
+%.run: %.c $(FOUNDATION_FILES) $(EXAM_FILES)
+	@echo "$<"
+	@$(CC) $(CFLAGS) $< $(FOUNDATION_FILES) $(EXAM_FILES) -o test_exe $(LDFLAGS)
+	@./test_exe
+	@rm test_exe
+	@echo ""
+
+# Run a specific test (e.g., make test_f_general_math)
+test_%: test_%.c $(FOUNDATION_FILES) $(EXAM_FILES)
+	@echo "Running $@..."
+	@$(CC) $(CFLAGS) $< $(FOUNDATION_FILES) $(EXAM_FILES) -o test_exe $(LDFLAGS)
+	@./test_exe
+	@rm test_exe
+
+clean:
+	rm -f test_exe *.o
