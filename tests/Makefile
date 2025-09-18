@@ -11,17 +11,17 @@ TEST_FILES = $(wildcard test_*.c)
 test: $(TEST_FILES:.c=.run)
 
 # Pattern rule to compile and run each test file
-%.run: %.c $(FOUNDATION_FILES) $(EXAM_FILES)
+%.run: %.c $(EXAM_FILES) $(FOUNDATION_FILES)
 	@echo "$<"
-	@$(CC) $(CFLAGS) $< $(FOUNDATION_FILES) $(EXAM_FILES) -o test_exe $(LDFLAGS)
+	@$(CC) $(CFLAGS) $< $(EXAM_FILES) $(FOUNDATION_FILES) -o test_exe $(LDFLAGS)
 	@./test_exe
 	@rm test_exe
 	@echo ""
 
 # Run a specific test (e.g., make test_f_general_math)
-test_%: test_%.c $(FOUNDATION_FILES) $(EXAM_FILES)
+test_%: test_%.c $(EXAM_FILES) $(FOUNDATION_FILES)
 	@echo "Running $@..."
-	@$(CC) $(CFLAGS) $< $(FOUNDATION_FILES) $(EXAM_FILES) -o test_exe $(LDFLAGS)
+	@$(CC) $(CFLAGS) $< $(EXAM_FILES) $(FOUNDATION_FILES) -o test_exe $(LDFLAGS)
 	@./test_exe
 	@rm test_exe
 

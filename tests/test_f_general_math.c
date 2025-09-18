@@ -34,6 +34,13 @@ int main()
 
         e_end();
     }
+    //...
+    {
+        e_begin("f_clamp_i8");
+        e_expect_assert_fail();
+        e_assert(f_clamp_i8(10,0,-10));
+        e_end();
+    }
 
     e_log_summary();
     return 0;

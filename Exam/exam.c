@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-#include "exam.h"
 #include "foundation.h"
+#include "exam.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 /// hidden globals
+bool _e_expect_assert = false;
 char* _e_name;
 
 u64 _e_passed = 0;
@@ -24,8 +25,19 @@ void e_begin(char* name)
     printf("\t%s:\n", name);
 }
 
+void e_expect_assert_fail()
+{
+    _e_expect_assert = true;
+}
+
 void _e_assert(bool passed, const char* file, int line)
 {
+    if (_e_expect_assert)
+    {
+        _e_expect_assert = false;
+        passed = !passed;
+    }
+
     ++_e_total;
     if (passed)
     {

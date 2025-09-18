@@ -4,6 +4,7 @@
 #include "stdbool.h"
 
 extern void e_begin(char* name);
+extern void e_expect_assert_fail();
 extern void _e_assert(bool condition, const char* file, int line);
 extern void e_end();
 extern void e_log_summary();
