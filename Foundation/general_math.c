@@ -13,7 +13,6 @@ bool f_approximately_d(const double a, const double b, const double range)
     return a <= b + range && a >= b - range;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////
 // min
 i8 f_min_i8(const i8 a, const i8 b)     { return a < b ? a : b; }

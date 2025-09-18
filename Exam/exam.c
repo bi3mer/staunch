@@ -21,7 +21,7 @@ void e_begin(char* name)
     _e_passed = 0;
     _e_total = 0;
 
-    printf("%s:\n", name);
+    printf("\t%s:\n", name);
 }
 
 void _e_assert(bool passed, const char* file, int line)
@@ -33,7 +33,7 @@ void _e_assert(bool passed, const char* file, int line)
     }
     else
     {
-        printf("\t%s::%u failed\n", file, line);
+        printf("\t\t%s::%u failed\n", file, line);
     }
 }
 
@@ -45,15 +45,15 @@ void e_end()
         ++_e_all_passed;
         printf("\x1b[1F"); // Move to beginning of previous line
         printf("\x1b[2K"); // Clear entire line
-        printf("%s Passed: %llu / %llu\n", _e_name, _e_passed, _e_total);
+        printf("\t%s Passed: %llu / %llu\n", _e_name, _e_passed, _e_total);
     }
     else
     {
-        printf("\tFailed: %llu / %llu\n", _e_passed, _e_total);
+        printf("\t\tFailed: %llu / %llu\n", _e_passed, _e_total);
     }
 }
 
 void e_log_summary()
 {
-    printf("\n%llu/%llu test cases pass.\n", _e_all_passed, _e_all_total);
+    printf("\t%llu/%llu test cases pass.\n", _e_all_passed, _e_all_total);
 }
