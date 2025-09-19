@@ -4,7 +4,7 @@ What is Foundation? ____
 
 ## Compiling Notes
 
-Foundation.h files do include `assert` calls from `assert.h`. If you do not want these to run in your final build, make sure to include the flag `-DNDEBUG` when you compile.
+Foundation.h files do include `e_assert` calls from [Exam](../Exam)---see the [README](../README.md) for info on production versus debug builds.
 
 ## Tests
 
