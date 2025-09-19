@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c11 -I../Exam -I../Foundation -I.
+CFLAGS = -DMODE_UNIT_TEST -std=c11 -I../Exam -I../Foundation -I.
 LDFLAGS = -lm
 
 # Find all .c files

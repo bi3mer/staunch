@@ -1,5 +1,5 @@
 #include "foundation.h"
-#include <assert.h>
+#include "exam.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // approximately
@@ -47,62 +47,62 @@ double f_max_d(const double a, const double b) { return a > b ? a : b; }
 // clamp
 i8 f_clamp_i8(const i8 min, const i8 val, const i8 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 i16 f_clamp_i16(const i16 min, const i16 val, const i16 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 i32 f_clamp_i32(const i32 min, const i32 val, const i32 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 i64 f_clamp_i64(const i64 min, const i64 val, const i64 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 
 u8 f_clamp_u8(const u8 min, const u8 val, const u8 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u16 f_clamp_u16(const u16 min, const u16 val, const u16 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u32 f_clamp_u32(const u32 min, const u32 val, const u32 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u64 f_clamp_u64(const u64 min, const u64 val, const u64 max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 
 float f_clamp_f(const float min, const float val, const float max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 double f_clamp_d(const double min, const double val, const double max)
 {
-    assert(min <= max);
+    e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }

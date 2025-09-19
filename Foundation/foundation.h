@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdlib.h>
 #ifndef _FOUNDATION_
 #define _FOUNDATION_
 
