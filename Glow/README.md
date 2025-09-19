@@ -21,10 +21,12 @@ int main()
 }
 ```
 
-Compile with `gcc -o glow-example -std=c11 -I glow.h glow.c main.c`. You mean need to update the paths to glow files, depending on where you made your `main.c` file. Then run the executable: `./glow-example`. It will print out:
+Compile with:
 
-```
-$${\color{red}Error}$$
-Fine
+```bash
+gcc -o glow-example -std=c11 -I glow.h glow.c main.c`
 ```
 
+You mean need to update the paths to glow files, depending on where you made your `main.c` file. Then run the executable: `./glow-example`. It will print out:
+
+![](media/example-screenshot.png)
