@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "exam.h"
+#include "glow.h"
 
 #if BUILD_MODE == 1 // Unit Test
     ///////////////////////////////////////////////////////////////////////////
@@ -58,17 +59,23 @@
             ++_e_all_passed;
             printf("\x1b[1F"); // Move to beginning of previous line
             printf("\x1b[2K"); // Clear entire line
+            glow_set_color(GLOW_GREEN);
             printf("\t%s Passed: %u / %u\n", _e_name, _e_passed, _e_total);
+            glow_reset();
         }
         else
         {
+            glow_set_color(GLOW_RED);
             printf("\t\tFailed: %u / %u\n", _e_passed, _e_total);
+            glow_reset();
         }
     }
 
     void e_log_summary()
     {
+        glow_set_color(_e_all_passed == _e_all_total ? GLOW_BOLD_GREEN : GLOW_BOLD_RED);
         printf("\t%u/%u test cases pass.\n", _e_all_passed, _e_all_total);
+        glow_reset();
     }
 #else // debug
     void __e_assert(const bool condition, const char* file, const int line)
