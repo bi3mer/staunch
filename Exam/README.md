@@ -74,4 +74,8 @@ Since `e_assert` can and should be used in parts of your codebase not related to
 -DMODE_DEBUG
 ```
 
-See [../tests/Makefile](../tests/Makefile) for an example of building unit test mode, and the behavior is exactly what you would expect. If compiled with `-DMODE_DEBUG` (this is also the DEFAULT mode), then the behavior will be similar to assert where a message is logged to `stdout` and then the program is exited. If in `-DMODE_PRODUCTION`, asserts are not compiled into the final build.
+- If compiled with `-DMODE_PRODUCTION`, then all `e_assert` calls will not be included in the final executable.
+- If compiled with `-DMODE_UNIT_TEST`, then `e_assert` calls will be treated as unit tests, meaning a failed assert will not end program execution.
+- If compiled with `-DMODE_DEBUG` or none of the flags above, then `e_assert` will behave similarly to `assert`.
+
+See [../tests/Makefile](../tests/Makefile) for an example of building in unit test mode.
