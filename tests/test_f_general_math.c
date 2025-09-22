@@ -8,6 +8,8 @@
 
 int main()
 {
+    ///////////////////////////////////////////////////////////////////////////
+    // f_approximately
     {
         e_begin("f_approximately_2f");
         e_assert(f_approximately_f(2.f, 1.999991f, 0.01f));
@@ -26,6 +28,8 @@ int main()
         e_assert(!f_approximately_d(2.0, 1.999991, 0.000001));
         e_end();
     }
+    ///////////////////////////////////////////////////////////////////////////
+    // f_min
     {
         e_begin("f_min_i8");
         e_assert(f_min_i8(-3, 127) == -3);
@@ -34,7 +38,17 @@ int main()
 
         e_end();
     }
+    {
+        e_begin("f_min_i16");
+        e_assert(f_min_i16(-3, 32767) == -3);
+        e_assert(f_min_i16(32767, -32767) == -32767);
+        e_assert(f_min_i16(0, 0) == 0);
+
+        e_end();
+    }
     //...
+    ///////////////////////////////////////////////////////////////////////////
+    // f_clamp
     {
         e_begin("f_clamp_i8");
         e_expect_assert_fail();
