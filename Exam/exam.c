@@ -77,6 +77,7 @@
         printf("\t%u/%u test cases pass.\n", _e_all_passed, _e_all_total);
         glow_reset();
     }
+
 #else // debug
     void __e_assert(const bool condition, const char* file, const int line)
     {
