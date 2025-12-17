@@ -131,13 +131,13 @@ extern bool f_in_between_u64(u64 min, u64 middle, u64 max);
 
 /// modulus
 // mathematically correct modulus that can handle negative values for i8
-extern bool f_modulus_i8(i8 number, i8 divisor);
+extern i8 f_modulus_i8(i8 number, i8 divisor);
 // mathematically correct modulus that can handle negative values for i16
-extern bool f_modulus_i16(i16 number, i16 divisor);
+extern i16 f_modulus_i16(i16 number, i16 divisor);
 // mathematically correct modulus that can handle negative values for i32
-extern bool f_modulus_i32(i32 number, i32 divisor);
+extern i32 f_modulus_i32(i32 number, i32 divisor);
 // mathematically correct modulus that can handle negative values for i64
-extern bool f_modulus_i64(i64 number, i64 divisor);
+extern i64 f_modulus_i64(i64 number, i64 divisor);
 
 ///////////////////////////////////////////////////////////////////////////////
 //// linear_algebra.c

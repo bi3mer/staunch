@@ -217,7 +217,7 @@ bool f_in_between_u64(u64 min, u64 middle, u64 max)
 
 ///////////////////////////////////////////////////////////////////////////////
 // modulus
-bool f_modulus_i8(i8 number, i8 divisor)
+i8 f_modulus_i8(i8 number, i8 divisor)
 {
     e_assert(divisor > 0);
     i8 res = number % divisor;
@@ -228,7 +228,7 @@ bool f_modulus_i8(i8 number, i8 divisor)
     return res;
 }
 
-bool f_modulus_i16(i16 number, i16 divisor)
+i16 f_modulus_i16(i16 number, i16 divisor)
 {
     e_assert(divisor > 0);
     i16 res = number % divisor;
@@ -239,7 +239,7 @@ bool f_modulus_i16(i16 number, i16 divisor)
     return res;
 }
 
-bool f_modulus_i32(i32 number, i32 divisor)
+i32 f_modulus_i32(i32 number, i32 divisor)
 {
     e_assert(divisor > 0);
     i32 res = number % divisor;
@@ -250,7 +250,7 @@ bool f_modulus_i32(i32 number, i32 divisor)
     return res;
 }
 
-bool f_modulus_i64(i64 number, i64 divisor)
+i64 f_modulus_i64(i64 number, i64 divisor)
 {
     e_assert(divisor > 0);
     i64 res = number % divisor;
