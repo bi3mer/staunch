@@ -10,30 +10,30 @@
 #if defined(_WIN32) || defined(WIN32)
 #include "windows.h"
 
-extern void glow_set_color(const char* ansii_escape);
-extern void glow_reset();
+extern void glow_set_color(const char *ansii_escape);
+extern void glow_reset(void);
 
 #else
 
-#define GLOW_RESET        "\033[0m"
-#define GLOW_BLACK        "\033[30m"
-#define GLOW_RED          "\033[31m"
-#define GLOW_GREEN        "\033[32m"
-#define GLOW_YELLOW       "\033[33m"
-#define GLOW_BLUE         "\033[34m"
-#define GLOW_MAGENTA      "\033[35m"
-#define GLOW_CYAN         "\033[36m"
-#define GLOW_WHITE        "\033[37m"
-#define GLOW_BOLD_BLACK   "\033[1m\033[30m"
-#define GLOW_BOLD_RED     "\033[1m\033[31m"
-#define GLOW_BOLD_GREEN   "\033[1m\033[32m"
-#define GLOW_BOLD_YELLOW  "\033[1m\033[33m"
-#define GLOW_BOLD_BLUE    "\033[1m\033[34m"
+#define GLOW_RESET "\033[0m"
+#define GLOW_BLACK "\033[30m"
+#define GLOW_RED "\033[31m"
+#define GLOW_GREEN "\033[32m"
+#define GLOW_YELLOW "\033[33m"
+#define GLOW_BLUE "\033[34m"
+#define GLOW_MAGENTA "\033[35m"
+#define GLOW_CYAN "\033[36m"
+#define GLOW_WHITE "\033[37m"
+#define GLOW_BOLD_BLACK "\033[1m\033[30m"
+#define GLOW_BOLD_RED "\033[1m\033[31m"
+#define GLOW_BOLD_GREEN "\033[1m\033[32m"
+#define GLOW_BOLD_YELLOW "\033[1m\033[33m"
+#define GLOW_BOLD_BLUE "\033[1m\033[34m"
 #define GLOW_BOLD_MAGENTA "\033[1m\033[35m"
-#define GLOW_BOLD_CYAN    "\033[1m\033[36m"
-#define GLOW_BOLD_WHITE   "\033[1m\033[37m"
+#define GLOW_BOLD_CYAN "\033[1m\033[36m"
+#define GLOW_BOLD_WHITE "\033[1m\033[37m"
 
-extern void glow_set_color(const char* ansii_escape);
-extern void glow_reset();
+extern void glow_set_color(const char *ansii_escape);
+extern void glow_reset(void);
 
 #endif

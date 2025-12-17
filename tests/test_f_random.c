@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <sys/syslimits.h>
 
-#include "foundation.h"
 #include "exam.h"
+#include "foundation.h"
 
-int main()
+int main(void)
 {
     {
         e_begin("Purposeful Fail");

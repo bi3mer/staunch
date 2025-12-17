@@ -1,4 +1,4 @@
-# Exam
+## Exam
 
 `Exam` is a very simple library for unit testing. The basic format for unit tests is the following:
 
@@ -29,8 +29,8 @@ Which will output:
 
 ```
   add Passed: 1 / 1
-	subtract Passed: 2 / 2
-	2/2 test cases pass.
+  subtract Passed: 2 / 2
+  2/2 test cases pass.
 ```
 
 The idea, though, is that you should also be able to use it in your code, and outside of a file for unit tests.
@@ -63,7 +63,7 @@ Which outputs:
 
 ```
   clamp Passed: 4 / 4
-	1/1 test cases pass.
+  1/1 test cases pass.
 ```
 
 Since `e_assert` can and should be used in parts of your codebase not related to unit testing, its behavior is different depending on the compile mode which can be set with a flag:

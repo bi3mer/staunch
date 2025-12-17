@@ -4,9 +4,9 @@
 #ifndef _FOUNDATION_
 #define _FOUNDATION_
 
-#include <stdint.h>
-#include <float.h>
 #include "stdbool.h"
+#include <float.h>
+#include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 //// types
@@ -110,6 +110,35 @@ extern bool f_approximately_f(const float a, const float b, const float range);
 // Returns true if values are approximately similar, based on range for 32 bit double
 extern bool f_approximately_d(const double a, const double b, const double range);
 
+/// in_between
+// Checks if a i8 is in between two othes
+extern bool f_in_between_i8(i16 min, i16 middle, i16 max);
+// Checks if a i16 is in between two othes
+extern bool f_in_between_i16(i16 min, i16 middle, i16 max);
+// Checks if a i32 is in between two othes
+extern bool f_in_between_i32(i32 min, i32 middle, i32 max);
+// Checks if a i64 is in between two othes
+extern bool f_in_between_i64(i64 min, i64 middle, i64 max);
+
+// Checks if a u8 is in between two othes
+extern bool f_in_between_u8(u16 min, u16 middle, u16 max);
+// Checks if a u16 is in between two othes
+extern bool f_in_between_u16(u16 min, u16 middle, u16 max);
+// Checks if a u32 is in between two othes
+extern bool f_in_between_u32(u32 min, u32 middle, u32 max);
+// Checks if a u64 is in between two othes
+extern bool f_in_between_u64(u64 min, u64 middle, u64 max);
+
+/// modulus
+// mathematically correct modulus that can handle negative values for i8
+extern bool f_modulus_i8(i8 number, i8 divisor);
+// mathematically correct modulus that can handle negative values for i16
+extern bool f_modulus_i16(i16 number, i16 divisor);
+// mathematically correct modulus that can handle negative values for i32
+extern bool f_modulus_i32(i32 number, i32 divisor);
+// mathematically correct modulus that can handle negative values for i64
+extern bool f_modulus_i64(i64 number, i64 divisor);
+
 ///////////////////////////////////////////////////////////////////////////////
 //// linear_algebra.c
 // Computes length of 2d vector with 32 bit float
@@ -153,7 +182,7 @@ extern double f_vec3d_dot(const double vec1[3], const float vec2[3]);
 extern void f_rand_init(i64 seed);
 
 // generate random bool (true or false)
-extern bool f_rand_bool();
+extern bool f_rand_bool(void);
 
 // generate random i8 between a minimum and maximum
 extern i8 f_rand_i8(const i8 min, const i8 max);

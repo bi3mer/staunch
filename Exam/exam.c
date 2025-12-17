@@ -5,87 +5,86 @@
 #include "glow.h"
 
 #if BUILD_MODE == 1 // Unit Test
-    ///////////////////////////////////////////////////////////////////////////
-    /// hidden globals
-    bool _e_expect_assert = false;
-    char* _e_name;
+///////////////////////////////////////////////////////////////////////////
+/// hidden globals
+bool _e_expect_assert = false;
+char *_e_name;
 
-    unsigned int _e_passed = 0;
-    unsigned int _e_total  = 0;
+unsigned int _e_passed = 0;
+unsigned int _e_total = 0;
 
-    unsigned int _e_all_passed = 0;
-    unsigned int _e_all_total = 0;
+unsigned int _e_all_passed = 0;
+unsigned int _e_all_total = 0;
 
-    ///////////////////////////////////////////////////////////////////////////
-    /// Function implementations
-    void e_begin(char* name)
+///////////////////////////////////////////////////////////////////////////
+/// Function implementations
+void e_begin(char *name)
+{
+    _e_name = name;
+    _e_passed = 0;
+    _e_total = 0;
+
+    printf("\t%s:\n", name);
+}
+
+void e_expect_assert_fail()
+{
+    _e_expect_assert = true;
+}
+
+void __e_assert(bool passed, const char *file, int line)
+{
+    if (_e_expect_assert)
     {
-        _e_name = name;
-        _e_passed = 0;
-        _e_total = 0;
-
-        printf("\t%s:\n", name);
+        _e_expect_assert = false;
+        passed = !passed;
     }
 
-    void e_expect_assert_fail()
+    ++_e_total;
+    if (passed)
     {
-        _e_expect_assert = true;
+        ++_e_passed;
     }
-
-    void __e_assert(bool passed, const char* file, int line)
+    else
     {
-        if (_e_expect_assert)
-        {
-            _e_expect_assert = false;
-            passed = !passed;
-        }
-
-        ++_e_total;
-        if (passed)
-        {
-            ++_e_passed;
-        }
-        else
-        {
-            printf("\t\t%s::%u failed\n", file, line);
-        }
+        printf("\t\t%s::%u failed\n", file, line);
     }
+}
 
-    void e_end()
+void e_end()
+{
+    ++_e_all_total;
+    if (_e_passed == _e_total)
     {
-        ++_e_all_total;
-        if (_e_passed == _e_total)
-        {
-            ++_e_all_passed;
-            printf("\x1b[1F"); // Move to beginning of previous line
-            printf("\x1b[2K"); // Clear entire line
-            glow_set_color(GLOW_GREEN);
-            printf("\t%s Passed: %u / %u\n", _e_name, _e_passed, _e_total);
-            glow_reset();
-        }
-        else
-        {
-            glow_set_color(GLOW_RED);
-            printf("\t\tFailed: %u / %u\n", _e_passed, _e_total);
-            glow_reset();
-        }
-    }
-
-    void e_log_summary()
-    {
-        glow_set_color(_e_all_passed == _e_all_total ? GLOW_BOLD_GREEN : GLOW_BOLD_RED);
-        printf("\t%u/%u test cases pass.\n", _e_all_passed, _e_all_total);
+        ++_e_all_passed;
+        printf("\x1b[1F"); // Move to beginning of previous line
+        printf("\x1b[2K"); // Clear entire line
+        glow_set_color(GLOW_GREEN);
+        printf("\t%s Passed: %u / %u\n", _e_name, _e_passed, _e_total);
         glow_reset();
     }
+    else
+    {
+        glow_set_color(GLOW_RED);
+        printf("\t\tFailed: %u / %u\n", _e_passed, _e_total);
+        glow_reset();
+    }
+}
+
+void e_log_summary()
+{
+    glow_set_color(_e_all_passed == _e_all_total ? GLOW_BOLD_GREEN : GLOW_BOLD_RED);
+    printf("\t%u/%u test cases pass.\n", _e_all_passed, _e_all_total);
+    glow_reset();
+}
 
 #else // debug
-    void __e_assert(const bool condition, const char* file, const int line)
+void __e_assert(const bool condition, const char *file, const int line)
+{
+    if (!condition)
     {
-        if (!condition)
-        {
-            printf("%s::%i failed assertion\n", file, line);
-            exit(1);
-        }
+        printf("%s::%i failed assertion\n", file, line);
+        exit(1);
     }
-    #define e_assert(b, __FILE, __LINE)
+}
 #endif

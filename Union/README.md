@@ -1,6 +1,6 @@
-## Foundation
+# Union
 
-What is Foundation? ____
+A collection of data structures.
 
 ### Compiling Notes
 
