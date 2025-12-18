@@ -9,6 +9,11 @@ void f_rand_init(i64 seed)
     srand(seed);
 }
 
+bool f_rand_bool(void)
+{
+    return rand() % 2;
+}
+
 // TODO: look into the modulo bias
 // TODO: so much more to implement for thi to work
 u8 f_rand_u8(const u8 min, const u8 max)
