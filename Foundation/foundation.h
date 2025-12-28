@@ -4,8 +4,9 @@
 #ifndef _FOUNDATION_
 #define _FOUNDATION_
 
-#include "stdbool.h"
 #include <float.h>
+#include <math.h> // sqrt and sqrt_f
+#include <stdbool.h>
 #include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
