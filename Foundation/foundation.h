@@ -217,4 +217,34 @@ extern double f_rand_d(const double min, const double max);
 // generate double float between the minimum and maximum values of floats
 #define f_rand_d_max() f_rand_f(-DBL_MAX, DBL_MAX)
 
+///////////////////////////////////////////////////////////////////////////////
+//// point.c
+//-----------------------------------------------------------------------------
+// This contains different point types but all with the same API
+//-----------------------------------------------------------------------------
+typedef struct
+{
+    struct
+    {
+        double x, y;
+    } p;
+
+    double arr[2];
+} Point_d;
+
+// typedef struct
+// {
+//     struct
+//     {
+//         float x, y;
+//     } p;
+
+//     float arr[2];
+// } Point_f;
+
+extern void point_d_clone(const Point_d *p, Point_d *out);
+extern void point_d_add(Point_d *p_modified, const Point_d *p_added);
+extern void point_d_add_with_scale(Point_d *p_modified, const Point_d *p_added,
+                                   const double scale);
+
 #endif
