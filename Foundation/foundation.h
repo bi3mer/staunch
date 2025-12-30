@@ -21,6 +21,8 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
+#define F_PI 3.14159265359
+
 typedef struct
 {
     struct
