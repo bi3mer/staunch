@@ -13,6 +13,21 @@ bool point_d_equals(const Point_d *a, const Point_d *b, const double range)
            f_approximately_d(a->p.y, b->p.y, range);
 }
 
+Point_d point_d_random(const double min, const double max)
+{
+    Point_d out;
+    out.p.x = f_rand_d(min, max);
+    out.p.y = f_rand_d(min, max);
+
+    return out;
+}
+
+void point_d_random_in(const double min, const double max, Point_d *out)
+{
+    out->p.x = f_rand_d(min, max);
+    out->p.y = f_rand_d(min, max);
+}
+
 double point_d_magnitude(const Point_d *p)
 {
     return f_sqrt_d(p->p.x * p->p.x + p->p.y * p->p.y);
