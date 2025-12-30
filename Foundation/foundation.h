@@ -239,7 +239,7 @@ extern float f_rand_f(const float min, const float max);
 // generate random double between a minimum and maximum
 extern double f_rand_d(const double min, const double max);
 // generate double float between a 0 and 1
-#define f_rand_d_01() f_rand_f(0.0, 1.0);
+#define f_rand_d_01() f_rand_d(0.0, 1.0);
 // generate double float between the minimum and maximum values of floats
 #define f_rand_d_max() f_rand_f(-DBL_MAX, DBL_MAX)
 
