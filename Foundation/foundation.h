@@ -21,6 +21,26 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
+typedef struct
+{
+    struct
+    {
+        double x, y;
+    } p;
+
+    double arr[2];
+} Point_d;
+
+// typedef struct
+// {
+//     struct
+//     {
+//         float x, y;
+//     } p;
+
+//     float arr[2];
+// } Point_f;
+
 ///////////////////////////////////////////////////////////////////////////////
 //// General Math
 /// square root
@@ -141,7 +161,13 @@ extern i32 f_modulus_i32(i32 number, i32 divisor);
 extern i64 f_modulus_i64(i64 number, i64 divisor);
 
 ///////////////////////////////////////////////////////////////////////////////
+//// geometry.c
+extern bool f_circle_intersect_d(const Point_d p1, const double r1, const Point_d p2,
+                                 const double r2);
+
+///////////////////////////////////////////////////////////////////////////////
 //// linear_algebra.c
+/// @TODO: use point_f and point_d
 // Computes length of 2d vector with 32 bit float
 extern float f_vec2f_length(const float vec[2]);
 // Computes length of 2d vector with 64 bit double
@@ -222,29 +248,25 @@ extern double f_rand_d(const double min, const double max);
 //-----------------------------------------------------------------------------
 // This contains different point types but all with the same API
 //-----------------------------------------------------------------------------
-typedef struct
-{
-    struct
-    {
-        double x, y;
-    } p;
-
-    double arr[2];
-} Point_d;
-
-// typedef struct
-// {
-//     struct
-//     {
-//         float x, y;
-//     } p;
-
-//     float arr[2];
-// } Point_f;
-
 extern void point_d_clone(const Point_d *p, Point_d *out);
-extern void point_d_add(Point_d *p_modified, const Point_d *p_added);
-extern void point_d_add_with_scale(Point_d *p_modified, const Point_d *p_added,
-                                   const double scale);
+extern bool point_d_equals(const Point_d *a, const Point_d *b, const double range);
+
+extern double point_d_magnitude(const Point_d *p);
+
+extern Point_d point_d_divide(const Point_d *p, const double divisor);
+extern void point_d_divide_in(const Point_d *p, const double divisor, Point_d *out);
+
+extern Point_d point_d_multiply(const Point_d *p, const double scale);
+extern void point_d_multiply_in(const Point_d *p, const double scale, Point_d *out);
+
+extern Point_d point_d_add(const Point_d *a, const Point_d *b);
+extern void point_d_add_in(Point_d *p_modified, const Point_d *p_added);
+extern void point_d_add_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+                                      const double scale);
+
+extern Point_d point_d_subtract(const Point_d *p1, const Point_d *p2);
+extern void point_d_subtract_in(Point_d *p_modified, const Point_d *p_added);
+extern void point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+                                           const double scale);
 
 #endif

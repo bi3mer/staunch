@@ -1,3 +1,4 @@
+#include "exam.h"
 #include "foundation.h"
 
 void point_d_clone(const Point_d *p, Point_d *out)
@@ -6,15 +7,74 @@ void point_d_clone(const Point_d *p, Point_d *out)
     out->p.y = p->p.y;
 }
 
-void point_d_add(Point_d *p_modified, const Point_d *p_added)
+bool point_d_equals(const Point_d *a, const Point_d *b, const double range)
+{
+    return f_approximately_d(a->p.x, b->p.x, range) &&
+           f_approximately_d(a->p.y, b->p.y, range);
+}
+
+double point_d_magnitude(const Point_d *p)
+{
+    return f_sqrt_d(p->p.x * p->p.x + p->p.y * p->p.y);
+}
+
+Point_d point_d_divide(const Point_d *p, const double divisor)
+{
+    Point_d out = {.p.x = p->p.x / divisor, .p.y = p->p.y / divisor};
+    return out;
+}
+
+void point_d_divide_in(const Point_d *p, const double divisor, Point_d *out)
+{
+    out->p.x = p->p.x / divisor;
+    out->p.y = p->p.y / divisor;
+}
+
+Point_d point_d_multiply(const Point_d *p, const double scale)
+{
+    Point_d out = {.p.x = p->p.x * scale, .p.y = p->p.y};
+    return out;
+}
+
+void point_d_multiply_in(const Point_d *p, const double scale, Point_d *out)
+{
+    out->p.x = p->p.x * scale;
+    out->p.y = p->p.y * scale;
+}
+
+Point_d point_d_add(const Point_d *a, const Point_d *b)
+{
+    Point_d p = {.p.x = a->p.x + b->p.x, .p.y = a->p.y + b->p.y};
+    return p;
+}
+
+void point_d_add_in(Point_d *p_modified, const Point_d *p_added)
 {
     p_modified->p.x += p_added->p.x;
     p_modified->p.y += p_added->p.y;
 }
 
-void point_d_add_with_scale(Point_d *p_modified, const Point_d *p_added,
-                            const double scale)
+void point_d_add_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+                               const double scale)
 {
     p_modified->p.x += p_added->p.x * scale;
     p_modified->p.y += p_added->p.y * scale;
+}
+
+Point_d point_d_subtract(const Point_d *a, const Point_d *b)
+{
+    Point_d p = {.p.x = a->p.x - b->p.x, .p.y = a->p.y - b->p.y};
+    return p;
+}
+
+void point_d_subtract_in(Point_d *p_modified, const Point_d *p_added)
+{
+    p_modified->p.x -= p_added->p.x;
+    p_modified->p.y -= p_added->p.y;
+}
+void point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+                                    const double scale)
+{
+    p_modified->p.x -= p_added->p.x * scale;
+    p_modified->p.y -= p_added->p.y * scale;
 }
