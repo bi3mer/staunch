@@ -32,7 +32,7 @@ void point_d_divide_in(const Point_d *p, const double divisor, Point_d *out)
 
 Point_d point_d_multiply(const Point_d *p, const double scale)
 {
-    Point_d out = {.p.x = p->p.x * scale, .p.y = p->p.y};
+    Point_d out = {.p.x = p->p.x * scale, .p.y = p->p.y * scale};
     return out;
 }
 
@@ -72,6 +72,7 @@ void point_d_subtract_in(Point_d *p_modified, const Point_d *p_added)
     p_modified->p.x -= p_added->p.x;
     p_modified->p.y -= p_added->p.y;
 }
+
 void point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
                                     const double scale)
 {
