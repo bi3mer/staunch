@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdlib.h>
 #ifndef _FOUNDATION_
 #define _FOUNDATION_
 
@@ -273,5 +272,12 @@ extern Point_d point_d_subtract(const Point_d *p1, const Point_d *p2);
 extern void point_d_subtract_in(Point_d *p_modified, const Point_d *p_added);
 extern void point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
                                            const double scale);
+
+///////////////////////////////////////////////////////////////////////////////
+//// physics
+// Get mass of a circle based on radius and density
+extern double f_circle_mass_d(const double radius, const double density);
+// Get mass of a circle based on radius and density
+extern float f_circle_mass_f(const float radius, const float density);
 
 #endif
