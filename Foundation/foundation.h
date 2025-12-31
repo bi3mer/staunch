@@ -163,7 +163,7 @@ extern i64 f_modulus_i64(i64 number, i64 divisor);
 
 ///////////////////////////////////////////////////////////////////////////////
 //// geometry.c
-extern bool f_circle_intersect_d(const Point_d p1, const double r1, const Point_d p2,
+extern bool f_circle_intersect_d(const Point_d *p1, const double r1, const Point_d *p2,
                                  const double r2);
 
 ///////////////////////////////////////////////////////////////////////////////
