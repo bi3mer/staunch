@@ -274,10 +274,15 @@ extern void point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p
                                            const double scale);
 
 ///////////////////////////////////////////////////////////////////////////////
-//// physics
+//// physics.c
 // Get mass of a circle based on radius and density
 extern double f_circle_mass_d(const double radius, const double density);
 // Get mass of a circle based on radius and density
 extern float f_circle_mass_f(const float radius, const float density);
+
+///////////////////////////////////////////////////////////////////////////////
+//// memory.c
+// Swap two poitners
+extern void f_swap_ptr(void **a, void **b);
 
 #endif
