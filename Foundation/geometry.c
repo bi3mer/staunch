@@ -9,5 +9,5 @@ bool f_circle_intersect_d(const Point_d *p1, const double r1, const Point_d *p2,
     const double d = dx * dx + dy * dy;
     const double r_sum = r1 + r2;
 
-    return d * d <= r_sum * r_sum;
+    return d <= r_sum * r_sum;
 }
