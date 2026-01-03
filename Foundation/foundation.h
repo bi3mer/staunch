@@ -24,12 +24,14 @@ typedef uint64_t u64;
 
 typedef struct
 {
-    struct
+    union
     {
-        double x, y;
-    } p;
-
-    double arr[2];
+        struct
+        {
+            double x, y;
+        };
+        double arr[2];
+    };
 } Point_d;
 
 // typedef struct
@@ -248,10 +250,19 @@ extern double f_rand_d(const double min, const double max);
 //// point.c
 //-----------------------------------------------------------------------------
 // This contains different point types but all with the same API
+//
+// NOTE: _in suffix typically means in-place modification (f_point_d_scale in)
+//       but i have other functions like f_point_divide_in which do not behave
+//       similarly.
+//
+//       Resolve this.
 //-----------------------------------------------------------------------------
 extern void f_point_d_clone(const Point_d *p, Point_d *out);
 extern bool f_point_d_equals(const Point_d *a, const Point_d *b, const double range);
+
+extern Point_d f_point_d_zero(void);
 extern bool f_point_d_is_zero(const Point_d *p);
+extern void f_point_d_zero_out(Point_d *p);
 
 extern Point_d f_point_d_random(const double min, const double max);
 extern void f_point_d_random_in(const double min, const double max, Point_d *out);
