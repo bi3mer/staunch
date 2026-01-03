@@ -33,6 +33,11 @@ double point_d_magnitude(const Point_d *p)
     return f_sqrt_d(p->p.x * p->p.x + p->p.y * p->p.y);
 }
 
+double point_d_magnitude_squared(const Point_d *p)
+{
+    return p->p.x * p->p.x + p->p.y * p->p.y;
+}
+
 Point_d point_d_scale(const Point_d *p, const double scale_factor)
 {
     Point_d out;

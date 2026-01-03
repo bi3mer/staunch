@@ -256,6 +256,7 @@ extern Point_d point_d_random(const double min, const double max);
 extern void point_d_random_in(const double min, const double max, Point_d *out);
 
 extern double point_d_magnitude(const Point_d *p);
+extern double point_d_magnitude_squared(const Point_d *p);
 
 extern Point_d point_d_scale(const Point_d *p, const double scale_factor);
 extern void point_d_scale_in(Point_d *p, const double scale_factor);
