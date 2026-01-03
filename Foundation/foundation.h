@@ -249,33 +249,34 @@ extern double f_rand_d(const double min, const double max);
 //-----------------------------------------------------------------------------
 // This contains different point types but all with the same API
 //-----------------------------------------------------------------------------
-extern void point_d_clone(const Point_d *p, Point_d *out);
-extern bool point_d_equals(const Point_d *a, const Point_d *b, const double range);
+extern void f_point_d_clone(const Point_d *p, Point_d *out);
+extern bool f_point_d_equals(const Point_d *a, const Point_d *b, const double range);
+extern bool f_point_d_is_zero(const Point_d *p);
 
-extern Point_d point_d_random(const double min, const double max);
-extern void point_d_random_in(const double min, const double max, Point_d *out);
+extern Point_d f_point_d_random(const double min, const double max);
+extern void f_point_d_random_in(const double min, const double max, Point_d *out);
 
-extern double point_d_magnitude(const Point_d *p);
-extern double point_d_magnitude_squared(const Point_d *p);
+extern double f_point_d_magnitude(const Point_d *p);
+extern double f_point_d_magnitude_squared(const Point_d *p);
 
-extern Point_d point_d_scale(const Point_d *p, const double scale_factor);
-extern void point_d_scale_in(Point_d *p, const double scale_factor);
+extern Point_d f_point_d_scale(const Point_d *p, const double scale_factor);
+extern void f_point_d_scale_in(Point_d *p, const double scale_factor);
 
-extern Point_d point_d_divide(const Point_d *p, const double divisor);
-extern void point_d_divide_in(const Point_d *p, const double divisor, Point_d *out);
+extern Point_d f_point_d_divide(const Point_d *p, const double divisor);
+extern void f_point_d_divide_in(const Point_d *p, const double divisor, Point_d *out);
 
-extern Point_d point_d_multiply(const Point_d *p, const double scale);
-extern void point_d_multiply_in(const Point_d *p, const double scale, Point_d *out);
+extern Point_d f_point_d_multiply(const Point_d *p, const double scale);
+extern void f_point_d_multiply_in(const Point_d *p, const double scale, Point_d *out);
 
-extern Point_d point_d_add(const Point_d *a, const Point_d *b);
-extern void point_d_add_in(Point_d *p_modified, const Point_d *p_added);
-extern void point_d_add_with_scale_in(Point_d *p_modified, const Point_d *p_added,
-                                      const double scale);
+extern Point_d f_point_d_add(const Point_d *a, const Point_d *b);
+extern void f_point_d_add_in(Point_d *p_modified, const Point_d *p_added);
+extern void f_point_d_add_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+                                        const double scale);
 
-extern Point_d point_d_subtract(const Point_d *p1, const Point_d *p2);
-extern void point_d_subtract_in(Point_d *p_modified, const Point_d *p_added);
-extern void point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
-                                           const double scale);
+extern Point_d f_point_d_subtract(const Point_d *p1, const Point_d *p2);
+extern void f_point_d_subtract_in(Point_d *p_modified, const Point_d *p_added);
+extern void f_point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+                                             const double scale);
 
 ///////////////////////////////////////////////////////////////////////////////
 //// physics.c
