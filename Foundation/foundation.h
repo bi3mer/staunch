@@ -288,9 +288,9 @@ extern void f_point_d_add_with_scale_in(Point_d *p_modified, const Point_d *p_ad
                                         const double scale);
 
 extern Point_d f_point_d_subtract(const Point_d *p1, const Point_d *p2);
-extern void f_point_d_subtract_in(const Point_d *p1, const Point_d *p2, Point_d *out);
-extern void f_point_d_subtract_with_scale_in(const Point_d *p1, const Point_d *p2,
-                                             const double scale, Point_d *out);
+extern void f_point_d_subtract_in(Point_d *p1, const Point_d *p2);
+extern void f_point_d_subtract_with_scale_in(Point_d *p1, const Point_d *p2,
+                                             const double scale);
 
 ///////////////////////////////////////////////////////////////////////////////
 //// physics.c
