@@ -11,3 +11,13 @@ bool f_circle_intersect_d(const Point_d *p1, const double r1, const Point_d *p2,
 
     return d <= r_sum * r_sum;
 }
+
+bool f_point_d_in_circle_d(const Point_d *point, const Point_d *c, const double r)
+{
+    const Point_d p = {
+        .x = point->x - c->x,
+        .y = point->y - c->y,
+    };
+
+    return p.x * p.x + p.y * p.y < r * r;
+}

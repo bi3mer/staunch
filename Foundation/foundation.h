@@ -165,8 +165,11 @@ extern i64 f_modulus_i64(i64 number, i64 divisor);
 
 ///////////////////////////////////////////////////////////////////////////////
 //// geometry.c
+// test if two point_d based circles intersect
 extern bool f_circle_intersect_d(const Point_d *p1, const double r1, const Point_d *p2,
                                  const double r2);
+// test if a point_d is in a circle (double)
+extern bool f_point_d_in_circle_d(const Point_d *point, const Point_d *c, const double r);
 
 ///////////////////////////////////////////////////////////////////////////////
 //// linear_algebra.c
