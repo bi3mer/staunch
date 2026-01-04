@@ -174,21 +174,23 @@ Point_d f_point_d_subtract(const Point_d *a, const Point_d *b)
     return p;
 }
 
-void f_point_d_subtract_in(Point_d *p_modified, const Point_d *p_added)
+void f_point_d_subtract_in(const Point_d *p1, const Point_d *p2, Point_d *out)
 {
-    e_assert(p_modified != NULL);
-    e_assert(p_added != NULL);
+    e_assert(p1 != NULL);
+    e_assert(p2 != NULL);
+    e_assert(out != NULL);
 
-    p_modified->x -= p_added->x;
-    p_modified->y -= p_added->y;
+    out->x = p1->x - p2->x;
+    out->y = p1->y - p2->y;
 }
 
-void f_point_d_subtract_with_scale_in(Point_d *p_modified, const Point_d *p_added,
-                                      const double scale)
+void f_point_d_subtract_with_scale_in(const Point_d *p1, const Point_d *p2,
+                                      const double scale, Point_d *out)
 {
-    e_assert(p_modified != NULL);
-    e_assert(p_added != NULL);
+    e_assert(p1 != NULL);
+    e_assert(p2 != NULL);
+    e_assert(out != NULL);
 
-    p_modified->x -= p_added->x * scale;
-    p_modified->y -= p_added->y * scale;
+    out->x = (p1->x - p2->x) * scale;
+    out->y = (p1->y - p2->y) * scale;
 }
