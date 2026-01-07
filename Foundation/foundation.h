@@ -135,22 +135,22 @@ extern bool f_approximately_f(const float a, const float b, const float range);
 extern bool f_approximately_d(const double a, const double b, const double range);
 
 /// in_between
-// Checks if a i8 is in between two othes
+// Checks if a i8 is in between two others (inclusive, inclusive)
 extern bool f_in_between_i8(i16 min, i16 middle, i16 max);
-// Checks if a i16 is in between two othes
+// Checks if a i16 is in between two others (inclusive, inclusive)
 extern bool f_in_between_i16(i16 min, i16 middle, i16 max);
-// Checks if a i32 is in between two othes
+// Checks if a i32 is in between two others (inclusive, inclusive)
 extern bool f_in_between_i32(i32 min, i32 middle, i32 max);
-// Checks if a i64 is in between two othes
+// Checks if a i64 is in between two others (inclusive, inclusive)
 extern bool f_in_between_i64(i64 min, i64 middle, i64 max);
 
-// Checks if a u8 is in between two othes
-extern bool f_in_between_u8(u16 min, u16 middle, u16 max);
-// Checks if a u16 is in between two othes
+// Checks if a u8 is in between two others (inclusive, inclusive)
+extern bool f_in_between_u8(u8 min, u8 middle, u8 max);
+// Checks if a u16 is in between two others (inclusive, inclusive)
 extern bool f_in_between_u16(u16 min, u16 middle, u16 max);
-// Checks if a u32 is in between two othes
+// Checks if a u32 is in between two others (inclusive, inclusive)
 extern bool f_in_between_u32(u32 min, u32 middle, u32 max);
-// Checks if a u64 is in between two othes
+// Checks if a u64 is in between two others (inclusive, inclusive)
 extern bool f_in_between_u64(u64 min, u64 middle, u64 max);
 
 /// modulus

@@ -191,7 +191,7 @@ bool f_in_between_i64(i64 min, i64 middle, i64 max)
     return min <= middle && middle <= max;
 }
 
-bool f_in_between_u8(u16 min, u16 middle, u16 max)
+bool f_in_between_u8(u8 min, u8 middle, u8 max)
 {
     e_assert(min <= max);
     return min <= middle && middle <= max;
