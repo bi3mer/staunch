@@ -71,6 +71,31 @@ double f_point_d_magnitude_squared(const Point_d *p)
     return p->x * p->x + p->y * p->y;
 }
 
+Point_d f_point_d_normalize(const Point_d *p)
+{
+    e_assert(p != NULL);
+
+    const double d = f_point_d_magnitude(p);
+    e_assert(d != 0.0);
+
+    Point_d out;
+    out.x = p->x / d;
+    out.y = p->y / d;
+
+    return out;
+}
+
+void f_point_d_normalize_in(Point_d *p)
+{
+    e_assert(p != NULL);
+
+    const double d = f_point_d_magnitude(p);
+    e_assert(d != 0.0);
+
+    p->x /= d;
+    p->y /= d;
+}
+
 Point_d f_point_d_scale(const Point_d *p, const double scale_factor)
 {
     e_assert(p != NULL);
