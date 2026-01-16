@@ -226,13 +226,13 @@ extern i32 f_rand_i32(const i32 min, const i32 max);
 // generate random i64 between a minimum and maximum
 extern i64 f_rand_i64(const i64 min, const i64 max);
 
-// generate random u8 between a minimum (inclusive) and maximum (exclusive)
+// generate random u8 between a minimum (inclusive) and maximum (inclusive)
 extern u8 f_rand_u8(const u8 min, const u8 max);
-// generate random u16 between a minimum (inclusive) and maximum (exclusive)
+// generate random u16 between a minimum (inclusive) and maximum (inclusive)
 extern u16 f_rand_u16(const u16 min, const u16 max);
-// generate random 32 between a minimum (inclusive) and maximum (exclusive)
+// generate random 32 between a minimum (inclusive) and maximum (inclusive)
 extern u32 f_rand_u32(const u32 min, const u32 max);
-// generate random u64 between a minimum (inclusive) and maximum (exclusive)
+// generate random u64 between a minimum (inclusive) and maximum (inclusive)
 extern u64 f_rand_u64(const u64 min, const u64 max);
 
 // generate random float between a minimum and maximum
