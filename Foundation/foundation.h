@@ -212,7 +212,7 @@ extern double f_vec3d_dot(const double vec1[3], const float vec2[3]);
 // the basic API for different number types is reasonable, I think.
 //-----------------------------------------------------------------------------
 // Seed random number generation
-extern void f_rand_init(i64 seed);
+extern void f_rand_init(u32 seed);
 
 // generate random bool (true or false)
 extern bool f_rand_bool(void);

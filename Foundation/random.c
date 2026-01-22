@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 
-void f_rand_init(i64 seed)
+void f_rand_init(u32 seed)
 {
     srand(seed);
 }
