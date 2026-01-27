@@ -1,6 +1,5 @@
-
-#include "exam.h"
-#include "random.h"
+#include "staunch/exam.h"
+#include "staunch/random.h"
 
 int main(void)
 {

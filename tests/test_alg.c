@@ -1,5 +1,5 @@
-#include "alg.h"
-#include "exam.h"
+#include "staunch/alg.h"
+#include "staunch/exam.h"
 
 int main(void)
 {

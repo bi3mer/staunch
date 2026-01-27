@@ -1,4 +1,4 @@
-#include "glow.h"
+#include "staunch/glow.h"
 #include <stdio.h>
 
 #if defined(_WIN32) || defined(WIN32)

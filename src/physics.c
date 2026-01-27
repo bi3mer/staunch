@@ -1,5 +1,5 @@
-#include "physics.h"
-#include "constants.h"
+#include "staunch/physics.h"
+#include "staunch/constants.h"
 
 f64 f_circle_mass_d(const f64 radius, const f64 density)
 {

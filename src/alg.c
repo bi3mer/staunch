@@ -1,5 +1,5 @@
-#include "alg.h"
-#include "types.h"
+#include "staunch/alg.h"
+#include "staunch/types.h"
 
 bool s_alg_has_non_zero_d(const double *arr, size_t len)
 {

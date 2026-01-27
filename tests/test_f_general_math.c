@@ -1,5 +1,5 @@
-#include "exam.h"
-#include "general_math.h"
+#include "staunch/exam.h"
+#include "staunch/general_math.h"
 
 int main()
 {

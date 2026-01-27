@@ -1,7 +1,7 @@
-#include "point.h"
-#include "exam.h"
-#include "general_math.h"
-#include "random.h"
+#include "staunch/point.h"
+#include "staunch/exam.h"
+#include "staunch/general_math.h"
+#include "staunch/random.h"
 
 #include <math.h>
 #include <stdio.h>

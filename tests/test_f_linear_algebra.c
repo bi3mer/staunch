@@ -1,8 +1,8 @@
 #include <math.h>
 
-#include "exam.h"
-#include "general_math.h"
-#include "linear_algebra.h"
+#include "staunch/exam.h"
+#include "staunch/general_math.h"
+#include "staunch/linear_algebra.h"
 
 int main()
 {

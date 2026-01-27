@@ -1,5 +1,5 @@
-#include "random.h"
-#include "exam.h"
+#include "staunch/random.h"
+#include "staunch/exam.h"
 
 #include <stdlib.h>
 

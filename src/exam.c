@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "exam.h"
-#include "glow.h"
+#include "staunch/exam.h"
+#include "staunch/glow.h"
 
 #if BUILD_MODE == 1 // Unit Test
 #include "time.h"
