@@ -1,5 +1,4 @@
-#include "foundation.h"
-
+#include "random.h"
 #include "exam.h"
 
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-#include "foundation.h"
+#include "geometry.h"
 
 bool f_circle_intersect_d(const Point_d *p1, const double r1, const Point_d *p2,
                           const double r2)

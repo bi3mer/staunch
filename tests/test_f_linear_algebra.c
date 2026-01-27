@@ -1,7 +1,8 @@
 #include <math.h>
 
 #include "exam.h"
-#include "foundation.h"
+#include "general_math.h"
+#include "linear_algebra.h"
 
 int main()
 {

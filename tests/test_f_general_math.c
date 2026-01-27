@@ -1,5 +1,5 @@
 #include "exam.h"
-#include "foundation.h"
+#include "general_math.h"
 
 int main()
 {

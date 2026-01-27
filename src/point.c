@@ -1,5 +1,7 @@
+#include "point.h"
 #include "exam.h"
-#include "foundation.h"
+#include "general_math.h"
+#include "random.h"
 
 #include <math.h>
 #include <stdio.h>

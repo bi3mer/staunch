@@ -1,6 +1,6 @@
 # Staunch
 
-Staunch is a C99 library filled with functions and tools that I find useful. It is not complete, and it will never be complete. When I need something for a project I am working on, I add it. A good example of this is [glow](src/glow.h). I have support for mac and linux but because I don't develop on Windows, I have no actual implementation of the functionality. I can add it, but I won't unless I need it.
+Staunch is a C11 library filled with functions and tools that I find useful. It is not complete, and it will never be complete. When I need something for a project I am working on, I add it. A good example of this is [glow](src/glow.h). I have support for mac and linux but because I don't develop on Windows, I have no actual implementation of the functionality. I can add it, but I won't unless I need it.
 
 ## TODO:
 

@@ -1,0 +1,6 @@
+#ifndef _STAUNCH_CONSTANTS_
+#define _STAUNCH_CONSTANTS_
+
+#define F_PI 3.14159265359
+
+#endif // _STAUNCH_CONSTANTS_

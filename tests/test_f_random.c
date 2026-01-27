@@ -1,6 +1,6 @@
 
 #include "exam.h"
-#include "foundation.h"
+#include "random.h"
 
 int main(void)
 {

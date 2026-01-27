@@ -1,11 +1,12 @@
-#include "foundation.h"
+#include "physics.h"
+#include "constants.h"
 
-double f_circle_mass_d(const double radius, const double density)
+f64 f_circle_mass_d(const f64 radius, const f64 density)
 {
     return F_PI * radius * radius * density;
 }
 
-float f_circle_mass_f(const float radius, const float density)
+f32 f_circle_mass_f(const f32 radius, const f32 density)
 {
     return (float)F_PI * radius * radius * density;
 }

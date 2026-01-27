@@ -1,5 +1,5 @@
 #include "alg.h"
-#include "foundation.h"
+#include "types.h"
 
 bool s_alg_has_non_zero_d(const double *arr, size_t len)
 {
@@ -23,13 +23,3 @@ bool s_alg_has_non_zero_d(const double *arr, size_t len)
     }
     return false;
 }
-
-// bool s_alg_has_non_zero_d(const double *arr, size_t len)
-// {
-//     for (size_t i = 0; i < len; i++)
-//     {
-//         if (arr[i] != 0.0)
-//             return true;
-//     }
-//     return false;
-// }
