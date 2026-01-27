@@ -2,6 +2,8 @@
 #define _STAUNCH_GENERAL_MATH_
 
 #include "types.h"
+
+#include <math.h>
 #include <stdbool.h>
 
 /// square root
