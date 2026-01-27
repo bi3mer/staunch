@@ -1,7 +1,3 @@
-#include "stdio.h"
-#include <math.h>
-#include <stdio.h>
-#include <sys/syslimits.h>
 
 #include "exam.h"
 #include "foundation.h"

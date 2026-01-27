@@ -1,24 +1,22 @@
 CC = gcc
-CFLAGS = -DMODE_UNIT_TEST -std=c11 -I../Glow -I../Exam -I../Foundation -I.
+CFLAGS = -DMODE_UNIT_TEST -std=c11 -I../src  -I.
 LDFLAGS = -lm
 
-GLOW_FILES = $(wildcard ../Glow/*.c)
-EXAM_FILES = $(wildcard ../Exam/*.c)
-FOUNDATION_FILES = $(wildcard ../Foundation/*.c)
+SRC_FILES = $(wildcard ../src/*.c)
 TEST_FILES = $(wildcard test_*.c)
 
 test: $(TEST_FILES:.c=.run)
 
 %.run: %.c $(EXAM_FILES) $(FOUNDATION_FILES)
 	@echo "$<"
-	@$(CC) $(CFLAGS) $< $(GLOW_FILES) $(EXAM_FILES) $(FOUNDATION_FILES) -o test_exe $(LDFLAGS)
+	@$(CC) $(CFLAGS) $< $(SRC_FILES) -o test_exe $(LDFLAGS)
 	@./test_exe
 	@rm test_exe
 	@echo ""
 
 test_%: test_%.c $(EXAM_FILES) $(FOUNDATION_FILES)
 	@echo "Running $@..."
-	@$(CC) $(CFLAGS) $< $(GLOW_FILES) $(EXAM_FILES) $(FOUNDATION_FILES) -o test_exe $(LDFLAGS)
+	@$(CC) $(CFLAGS) $< $(SRC_FILES)  -o test_exe $(LDFLAGS)
 	@./test_exe
 	@rm test_exe
 

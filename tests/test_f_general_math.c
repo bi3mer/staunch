@@ -1,10 +1,5 @@
-#include "stdio.h"
-#include <math.h>
-#include <stdio.h>
-#include <sys/syslimits.h>
-
-#include "foundation.h"
 #include "exam.h"
+#include "foundation.h"
 
 int main()
 {
@@ -52,7 +47,7 @@ int main()
     {
         e_begin("f_clamp_i8");
         e_expect_assert_fail();
-        e_assert(f_clamp_i8(10,0,-10));
+        e_assert(f_clamp_i8(10, 0, -10));
         e_end();
     }
 

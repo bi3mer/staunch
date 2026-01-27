@@ -5,6 +5,8 @@
 #include "glow.h"
 
 #if BUILD_MODE == 1 // Unit Test
+#include "time.h"
+
 ///////////////////////////////////////////////////////////////////////////
 /// hidden globals
 bool _e_expect_assert = false;
@@ -16,6 +18,8 @@ unsigned int _e_total = 0;
 unsigned int _e_all_passed = 0;
 unsigned int _e_all_total = 0;
 
+clock_t _e_begin_time;
+
 ///////////////////////////////////////////////////////////////////////////
 /// Function implementations
 void e_begin(char *name)
@@ -23,6 +27,7 @@ void e_begin(char *name)
     _e_name = name;
     _e_passed = 0;
     _e_total = 0;
+    _e_begin_time = clock();
 
     printf("\t%s:\n", name);
 }
@@ -53,6 +58,7 @@ void __e_assert(bool passed, const char *file, int line)
 
 void e_end()
 {
+    clock_t end_time = clock();
     ++_e_all_total;
     if (_e_passed == _e_total)
     {
@@ -60,13 +66,15 @@ void e_end()
         printf("\x1b[1F"); // Move to beginning of previous line
         printf("\x1b[2K"); // Clear entire line
         glow_set_color(GLOW_GREEN);
-        printf("\t%s Passed: %u / %u\n", _e_name, _e_passed, _e_total);
+        printf("\t%s Passed: %u / %u (%f s)\n", _e_name, _e_passed, _e_total,
+               (double)(end_time - _e_begin_time) / CLOCKS_PER_SEC);
         glow_reset();
     }
     else
     {
         glow_set_color(GLOW_RED);
-        printf("\t\tFailed: %u / %u\n", _e_passed, _e_total);
+        printf("\t\tFailed: %u / %u (%f s)\n", _e_passed, _e_total,
+               (double)(end_time - _e_begin_time) / CLOCKS_PER_SEC);
         glow_reset();
     }
 }
