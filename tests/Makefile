@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -DMODE_UNIT_TEST -std=c11 -I../src  -I.
+CFLAGS = -DMODE_UNIT_TEST -std=c99 -I../src  -I.
 LDFLAGS = -lm
 
 SRC_FILES = $(wildcard ../src/*.c)

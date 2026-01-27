@@ -3,6 +3,28 @@
 
 #include "stdbool.h"
 
+//--------------------------------------- exam.h ----------------------------------------
+// Since `e_assert` can and should be used in parts of your codebase not related to unit
+// testing, its behavior is different depending on the compile mode which can be set with
+// a flag:
+//
+// ```
+// -DMODE_PRODUCTION
+// -DMODE_UNIT_TEST
+// -DMODE_DEBUG
+// ```
+
+// - If compiled with `-DMODE_PRODUCTION`, then all `e_assert` calls will not be included
+// in the final executable.
+// - If compiled with `-DMODE_UNIT_TEST`, then `e_assert` calls will be treated as unit
+// tests, meaning a failed assert will not end program execution.
+// - If compiled with `-DMODE_DEBUG` or none of the flags above, then `e_assert` will
+// behave similarly to `assert`.
+//
+// See [../tests/Makefile](../tests/Makefile) for an example of building in unit test
+// mode.
+//---------------------------------------------------------------------------------------
+
 #if defined(MODE_PRODUCTION)
 #define BUILD_MODE 0
 #elif defined(MODE_UNIT_TEST)

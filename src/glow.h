@@ -1,14 +1,51 @@
-// ----------------------------------------------------------------------------
-// The API I have below is not great, because the result will be something that
-// is not platform independent. Meaning, the user will have to write a
-// different version if they are on windows. There should be something in the
-// middle where its like, g_set_color(GLOW_RED), and that will work regardless
-// of whether the user is on windows, mac, or unix. I guess that you would want
-// the color to be hex or RGB that way the user can also specify custom colors.
-// ----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//    glow.h
+//
+// A simple library for color output on the terminal
+//
+//    SAMPLE
+// #include "glow.h"
+// #include <stdio.h>
+
+// int main()
+// {
+//     glow_set_color(GLOW_RED);
+//     printf("Error\n");
+//     glow_reset();
+//     printf("Fine\n");
+
+//     return 1;
+// }
+//
+//    NOTE
+// The API I have below is not great, because the result will be something that is not
+// platform independent. Meaning, the user will have to write a different version if they
+// are on windows. There should be something in the middle where its like,
+// g_set_color(GLOW_RED), and that will work regardless of whether the user is on windows,
+// mac, or unix. I guess that you would want the color to be hex or RGB that way the user
+// can also specify custom colors.
+//---------------------------------------------------------------------------------------
 
 #if defined(_WIN32) || defined(WIN32)
 #include "windows.h"
+
+#define GLOW_RESET((void)0)
+#define GLOW_BLACK ((void)0)
+#define GLOW_RED ((void)0)
+#define GLOW_GREEN ((void)0)
+#define GLOW_YELLOW ((void)0)
+#define GLOW_BLUE ((void)0)
+#define GLOW_MAGENTA ((void)0)
+#define GLOW_CYAN ((void)0)
+#define GLOW_WHITE ((void)0)
+#define GLOW_BOLD_BLACK ((void)0)
+#define GLOW_BOLD_RED ((void)0)
+#define GLOW_BOLD_GREEN ((void)0)
+#define GLOW_BOLD_YELLOW ((void)0)
+#define GLOW_BOLD_BLUE ((void)0)
+#define GLOW_BOLD_MAGENTA ((void)0)
+#define GLOW_BOLD_CYAN ((void)0)
+#define GLOW_BOLD_WHITE ((void)0)
 
 extern void glow_set_color(const char *ansii_escape);
 extern void glow_reset(void);
