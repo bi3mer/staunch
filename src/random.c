@@ -38,8 +38,14 @@ u64 f_rand_u64(const u64 min, const u64 max)
     return min + (rand() % (max - min + 1));
 }
 
-double f_rand_d(const double min, const double max)
+f32 f_rand_f32(const f32 min, const f32 max)
 {
     e_assert(max >= min);
-    return min + ((double)rand() / RAND_MAX) * (max - min);
+    return min + ((f32)rand() / RAND_MAX) * (max - min);
+}
+
+f64 f_rand_f64(const f64 min, const f64 max)
+{
+    e_assert(max >= min);
+    return min + ((f64)rand() / RAND_MAX) * (max - min);
 }

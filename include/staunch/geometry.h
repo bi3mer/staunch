@@ -3,6 +3,7 @@
 
 #include "point.h"
 #include "types.h"
+
 #include <stdbool.h>
 
 // test if two point_d based circles intersect

@@ -46,8 +46,8 @@ void f_point_d_zero_out(Point_d *p)
 Point_d f_point_d_random(const double min, const double max)
 {
     Point_d out;
-    out.x = f_rand_d(min, max);
-    out.y = f_rand_d(min, max);
+    out.x = f_rand_f64(min, max);
+    out.y = f_rand_f64(min, max);
 
     return out;
 }
@@ -56,8 +56,8 @@ void f_point_d_random_in(const double min, const double max, Point_d *out)
 {
     e_assert(out != NULL);
 
-    out->x = f_rand_d(min, max);
-    out->y = f_rand_d(min, max);
+    out->x = f_rand_f64(min, max);
+    out->y = f_rand_f64(min, max);
 }
 
 double f_point_d_magnitude(const Point_d *p)

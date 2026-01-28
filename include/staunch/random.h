@@ -37,14 +37,14 @@ extern u32 f_rand_u32(const u32 min, const u32 max);
 extern u64 f_rand_u64(const u64 min, const u64 max);
 
 // generate random float between a minimum and maximum
-extern float f_rand_f(const float min, const float max);
+extern float f_rand_f32(const f32 min, const f32 max);
 // generate random float between a 0 and 1
 #define f_rand_f_01() f_rand_f(0.f, 1.f);
 // generate random float between the minimum and maximum values of floats
 #define f_rand_f_max() f_rand_f(-FLT_MAX, FLT_MAX)
 
 // generate random double between a minimum and maximum
-extern double f_rand_d(const double min, const double max);
+extern f64 f_rand_f64(const f64 min, const f64 max);
 // generate double float between a 0 and 1
 #define f_rand_d_01() f_rand_d(0.0, 1.0);
 // generate double float between the minimum and maximum values of floats
