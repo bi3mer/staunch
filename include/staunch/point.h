@@ -12,7 +12,7 @@ typedef struct
         };
         double arr[2];
     };
-} Point_d;
+} Point64;
 
 typedef struct
 {
@@ -34,39 +34,39 @@ typedef struct
 //       Resolve this.
 //-----------------------------------------------------------------------------
 
-extern void f_point_d_clone(const Point_d *p, Point_d *out);
-extern bool f_point_d_equals(const Point_d *a, const Point_d *b, const double range);
+extern void f_point_d_clone(const Point64 *p, Point64 *out);
+extern bool f_point_d_equals(const Point64 *a, const Point64 *b, const double range);
 
-extern Point_d f_point_d_zero(void);
-extern bool f_point_d_is_zero(const Point_d *p);
-extern void f_point_d_zero_out(Point_d *p);
+extern Point64 f_point_d_zero(void);
+extern bool f_point_d_is_zero(const Point64 *p);
+extern void f_point_d_zero_out(Point64 *p);
 
-extern Point_d f_point_d_random(const double min, const double max);
-extern void f_point_d_random_in(const double min, const double max, Point_d *out);
+extern Point64 f_point_d_random(const double min, const double max);
+extern void f_point_d_random_in(const double min, const double max, Point64 *out);
 
-extern double f_point_d_magnitude(const Point_d *p);
-extern double f_point_d_magnitude_squared(const Point_d *p);
+extern double f_point_d_magnitude(const Point64 *p);
+extern double f_point_d_magnitude_squared(const Point64 *p);
 
-extern Point_d f_point_d_normalize(const Point_d *p);
-extern void f_point_d_normalize_in(Point_d *p);
+extern Point64 f_point_d_normalize(const Point64 *p);
+extern void f_point_d_normalize_in(Point64 *p);
 
-extern Point_d f_point_d_scale(const Point_d *p, const double scale_factor);
-extern void f_point_d_scale_in(Point_d *p, const double scale_factor);
+extern Point64 f_point_d_scale(const Point64 *p, const double scale_factor);
+extern void f_point_d_scale_in(Point64 *p, const double scale_factor);
 
-extern Point_d f_point_d_divide(const Point_d *p, const double divisor);
-extern void f_point_d_divide_in(const Point_d *p, const double divisor, Point_d *out);
+extern Point64 f_point_d_divide(const Point64 *p, const double divisor);
+extern void f_point_d_divide_in(const Point64 *p, const double divisor, Point64 *out);
 
-extern Point_d f_point_d_multiply(const Point_d *p, const double scale);
-extern void f_point_d_multiply_in(const Point_d *p, const double scale, Point_d *out);
+extern Point64 f_point_d_multiply(const Point64 *p, const double scale);
+extern void f_point_d_multiply_in(const Point64 *p, const double scale, Point64 *out);
 
-extern Point_d f_point_d_add(const Point_d *a, const Point_d *b);
-extern void f_point_d_add_in(Point_d *p_modified, const Point_d *p_added);
-extern void f_point_d_add_with_scale_in(Point_d *p_modified, const Point_d *p_added,
+extern Point64 f_point_d_add(const Point64 *a, const Point64 *b);
+extern void f_point_d_add_in(Point64 *p_modified, const Point64 *p_added);
+extern void f_point_d_add_with_scale_in(Point64 *p_modified, const Point64 *p_added,
                                         const double scale);
 
-extern Point_d f_point_d_subtract(const Point_d *p1, const Point_d *p2);
-extern void f_point_d_subtract_in(Point_d *p1, const Point_d *p2);
-extern void f_point_d_subtract_with_scale_in(Point_d *p1, const Point_d *p2,
+extern Point64 f_point_d_subtract(const Point64 *p1, const Point64 *p2);
+extern void f_point_d_subtract_in(Point64 *p1, const Point64 *p2);
+extern void f_point_d_subtract_with_scale_in(Point64 *p1, const Point64 *p2,
                                              const double scale);
 
 #endif // _STAUNCH_POINT_
