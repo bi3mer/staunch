@@ -45,13 +45,13 @@ extern Point64 f_point_d_random(const double min, const double max);
 extern void f_point_d_random_in(const double min, const double max, Point64 *out);
 
 extern double f_point_d_magnitude(const Point64 *p);
-extern double f_point_d_magnitude_squared(const Point64 *p);
+extern double s_point64_magnitude_squared(const Point64 *p);
 
 extern Point64 f_point_d_normalize(const Point64 *p);
 extern void f_point_d_normalize_in(Point64 *p);
 
 extern Point64 f_point_d_scale(const Point64 *p, const double scale_factor);
-extern void f_point_d_scale_in(Point64 *p, const double scale_factor);
+extern void s_point_d_scale_in(Point64 *p, const double scale_factor);
 
 extern Point64 f_point_d_divide(const Point64 *p, const double divisor);
 extern void f_point_d_divide_in(const Point64 *p, const double divisor, Point64 *out);

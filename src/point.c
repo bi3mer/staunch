@@ -67,7 +67,7 @@ double f_point_d_magnitude(const Point64 *p)
     return f_sqrt_d(p->x * p->x + p->y * p->y);
 }
 
-double f_point_d_magnitude_squared(const Point64 *p)
+double s_point64_magnitude_squared(const Point64 *p)
 {
     e_assert(p != NULL);
     return p->x * p->x + p->y * p->y;
@@ -109,7 +109,7 @@ Point64 f_point_d_scale(const Point64 *p, const double scale_factor)
     return out;
 }
 
-void f_point_d_scale_in(Point64 *p, const double scale_factor)
+void s_point_d_scale_in(Point64 *p, const double scale_factor)
 {
     e_assert(p != NULL);
 

@@ -159,7 +159,7 @@ float f_clamp_f(const float min, const float val, const float max)
     return val < min ? min : (val > max ? max : val);
 }
 
-double f_clamp_d(const double min, const double val, const double max)
+double s_clamp_f64(const double min, const double val, const double max)
 {
     e_assert(min <= max);
     return val < min ? min : (val > max ? max : val);

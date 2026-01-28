@@ -86,7 +86,7 @@ extern u64 f_clamp_u64(const u64 min, const u64 val, const u64 max);
 // clamp val between min and max for float
 extern float f_clamp_f(const float min, const float val, const float max);
 // clamp val between min and max for double
-extern double f_clamp_d(const double min, const double val, const double max);
+extern double s_clamp_f64(const double min, const double val, const double max);
 
 /// approximately
 // Returns true if values are approximately similar, based on range for 32 bit float
