@@ -18,13 +18,13 @@ extern void f_rand_init(u32 seed);
 // generate random bool (true or false)
 extern bool f_rand_bool(void);
 
-// generate random i8 between a minimum and maximum
+// generate random i8 between a minimum and maximum (inclusive)
 extern i8 f_rand_i8(const i8 min, const i8 max);
-// generate random i16 between a minimum and maximum
+// generate random i16 between a minimum and maximum (inclusive)
 extern i16 f_rand_i16(const i16 min, const i16 max);
-// generate random i32 between a minimum and maximum
+// generate random i32 between a minimum and maximum (inclusive)
 extern i32 f_rand_i32(const i32 min, const i32 max);
-// generate random i64 between a minimum and maximum
+// generate random i64 between a minimum and maximum (inclusive)
 extern i64 f_rand_i64(const i64 min, const i64 max);
 
 // generate random u8 between a minimum (inclusive) and maximum (inclusive)
@@ -39,15 +39,18 @@ extern u64 f_rand_u64(const u64 min, const u64 max);
 // generate random float between a minimum and maximum
 extern float f_rand_f32(const f32 min, const f32 max);
 // generate random float between a 0 and 1
-#define f_rand_f_01() f_rand_f(0.f, 1.f);
+#define f_rand_f_01() f_rand_f32(0.f, 1.f)
 // generate random float between the minimum and maximum values of floats
-#define f_rand_f_max() f_rand_f(-FLT_MAX, FLT_MAX)
+#define f_rand_f_max() f_rand_f32(-FLT_MAX, FLT_MAX)
 
 // generate random double between a minimum and maximum
 extern f64 f_rand_f64(const f64 min, const f64 max);
 // generate double float between a 0 and 1
-#define f_rand_d_01() f_rand_d(0.0, 1.0);
+#define f_rand_d_01() f_rand_f64(0.0, 1.0)
 // generate double float between the minimum and maximum values of floats
-#define f_rand_d_max() f_rand_f(-DBL_MAX, DBL_MAX)
+#define f_rand_d_max() f_rand_f64(-DBL_MAX, DBL_MAX)
+
+// get random element from array
+#define s_random_choice(arr, len) (&(arr)[f_rand_u32(0, (len) - 1)])
 
 #endif // _STAUNCH_RANDOM_
