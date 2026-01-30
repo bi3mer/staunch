@@ -13,6 +13,7 @@ Staunch is a C11 library filled with functions and tools that I find useful. It 
   - [ ] https://nachtimwald.com/2019/04/12/thread-pool-in-c/
   - [ ] https://github.com/EpicGamesExt/raddebugger/blob/master/src/linker/thread_pool/thread_pool.h
   - [ ] https://github.com/EpicGamesExt/raddebugger/blob/master/src/linker/thread_pool/thread_pool.c
+- Logger (file or printf versions)
 
 ## Tests
 
