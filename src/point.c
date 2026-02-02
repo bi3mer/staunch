@@ -16,7 +16,8 @@ bool f_point_d_equals(const Point64 *a, const Point64 *b, const double range)
 {
     e_assert(a != NULL);
     e_assert(b != NULL);
-    return f_approximately_d(a->x, b->x, range) && f_approximately_d(a->y, b->y, range);
+    return s_approximately_f64(a->x, b->x, range) &&
+           s_approximately_f64(a->y, b->y, range);
 }
 
 Point64 f_point_d_zero(void)
@@ -64,7 +65,7 @@ double f_point_d_magnitude(const Point64 *p)
 {
     e_assert(p != NULL);
 
-    return f_sqrt_d(p->x * p->x + p->y * p->y);
+    return s_sqrt_f64(p->x * p->x + p->y * p->y);
 }
 
 double s_point64_magnitude_squared(const Point64 *p)

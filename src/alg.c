@@ -1,7 +1,7 @@
 #include "staunch/alg.h"
 #include "staunch/types.h"
 
-bool s_alg_has_non_zero_d(const double *arr, size_t len)
+bool s_alg_has_non_zero_d(const f64 *arr, size_t len)
 {
     const u64 *words = (const u64 *)arr;
     size_t word_count = (len * sizeof(double)) / sizeof(uint64_t);

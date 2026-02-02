@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h> // memmove
 
-void *u_da_init(const size_t item_size, const size_t capacity)
+void *s_da_init(const size_t item_size, const size_t capacity)
 {
     void *ptr = 0;
     __DA_Header *h = (__DA_Header *)malloc(item_size * capacity + sizeof(__DA_Header));
@@ -26,7 +26,7 @@ void *u_da_init(const size_t item_size, const size_t capacity)
     return ptr;
 }
 
-void u_da_cleanup(void *da)
+void s_da_cleanup(void *da)
 {
     if (da)
     {
@@ -34,7 +34,7 @@ void u_da_cleanup(void *da)
     }
 }
 
-void u_da_ensure_capacity(void **da, const size_t capacity_increase)
+void s_da_ensure_capacity(void **da, const size_t capacity_increase)
 {
     __DA_Header *h = ((__DA_Header *)(*da) - 1);
     if (h->length + capacity_increase > h->capacity)
@@ -57,9 +57,9 @@ void u_da_ensure_capacity(void **da, const size_t capacity_increase)
     }
 }
 
-void *u_da_append(void **da)
+void *s_da_append(void **da)
 {
-    u_da_ensure_capacity(da, 1);
+    s_da_ensure_capacity(da, 1);
     __DA_Header *h = ((__DA_Header *)(*da) - 1);
     char *bytes = (char *)(*da);
     void *new_element = bytes + (h->length * h->item_size);
@@ -68,11 +68,11 @@ void *u_da_append(void **da)
     return new_element;
 }
 
-void *u_da_priority_insert(void **da, const float priority,
+void *s_da_priority_insert(void **da, const float priority,
                            int (*compare)(const void *, const float))
 {
     size_t i, insert_index;
-    u_da_ensure_capacity(da, 1);
+    s_da_ensure_capacity(da, 1);
     __DA_Header *h = ((__DA_Header *)(*da) - 1);
     char *bytes = (char *)(*da);
     insert_index = h->length;
@@ -95,7 +95,7 @@ void *u_da_priority_insert(void **da, const float priority,
            (insert_index * h->item_size); // Return pointer to the inserted element
 }
 
-void u_da_pop_start(void *da)
+void s_da_pop_start(void *da)
 {
     if (!da)
         return;
@@ -114,7 +114,7 @@ void u_da_pop_start(void *da)
     h->length--;
 }
 
-void u_da_pop_end(void *da)
+void s_da_pop_end(void *da)
 {
     if (!da)
         return;
@@ -126,7 +126,7 @@ void u_da_pop_end(void *da)
     }
 }
 
-void u_da_reverse(void *da)
+void s_da_reverse(void *da)
 {
     if (!da)
         return;
@@ -147,12 +147,12 @@ void u_da_reverse(void *da)
     }
 }
 
-size_t u_da_length(const void *da)
+size_t s_da_length(const void *da)
 {
     return da ? ((const __DA_Header *)da - 1)->length : 0;
 }
 
-void u_da_increment_length(void *da)
+void s_da_increment_length(void *da)
 {
     if (da)
     {
