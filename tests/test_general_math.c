@@ -1,9 +1,11 @@
 #include "staunch/exam.h"
 #include "staunch/general_math.h"
+
 #include <float.h>
 #include <limits.h>
+#include <stdio.h>
 
-int main()
+int main(void)
 {
     ///////////////////////////////////////////////////////////////////////////
     // s_approximately_f32
