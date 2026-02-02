@@ -17,12 +17,12 @@ void glow_reset(void)
 
 #else
 
-void glow_set_color(const char *ansii_escape)
+void s_glow_set_color(const char *ansii_escape)
 {
     printf("%s", ansii_escape);
 }
 
-void glow_reset(void)
+void s_glow_reset(void)
 {
     printf("%s", GLOW_RESET);
 }

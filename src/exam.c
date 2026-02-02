@@ -65,25 +65,25 @@ void e_end()
         ++_e_all_passed;
         printf("\x1b[1F"); // Move to beginning of previous line
         printf("\x1b[2K"); // Clear entire line
-        glow_set_color(GLOW_GREEN);
+        s_glow_set_color(GLOW_GREEN);
         printf("\t%s Passed: %u / %u (%f s)\n", _e_name, _e_passed, _e_total,
                (double)(end_time - _e_begin_time) / CLOCKS_PER_SEC);
-        glow_reset();
+        s_glow_reset();
     }
     else
     {
-        glow_set_color(GLOW_RED);
+        s_glow_set_color(GLOW_RED);
         printf("\t\tFailed: %u / %u (%f s)\n", _e_passed, _e_total,
                (double)(end_time - _e_begin_time) / CLOCKS_PER_SEC);
-        glow_reset();
+        s_glow_reset();
     }
 }
 
 void e_log_summary()
 {
-    glow_set_color(_e_all_passed == _e_all_total ? GLOW_BOLD_GREEN : GLOW_BOLD_RED);
+    s_glow_set_color(_e_all_passed == _e_all_total ? GLOW_BOLD_GREEN : GLOW_BOLD_RED);
     printf("\t%u/%u test cases pass.\n", _e_all_passed, _e_all_total);
-    glow_reset();
+    s_glow_reset();
 }
 
 #else // debug

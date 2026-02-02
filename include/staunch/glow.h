@@ -70,7 +70,7 @@ extern void glow_reset(void);
 #define GLOW_BOLD_CYAN "\033[1m\033[36m"
 #define GLOW_BOLD_WHITE "\033[1m\033[37m"
 
-extern void glow_set_color(const char *ansii_escape);
-extern void glow_reset(void);
+extern void s_glow_set_color(const char *ansii_escape);
+extern void s_glow_reset(void);
 
 #endif
