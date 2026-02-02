@@ -6,13 +6,13 @@
 #include <math.h>
 #include <stdio.h>
 
-void f_point_d_clone(const Point64 *p, Point64 *out)
+void s_point_clone_f64(const Point64 *p, Point64 *out)
 {
     out->x = p->x;
     out->y = p->y;
 }
 
-bool f_point_d_equals(const Point64 *a, const Point64 *b, const double range)
+bool s_point_equals_f64(const Point64 *a, const Point64 *b, const f64 range)
 {
     e_assert(a != NULL);
     e_assert(b != NULL);
@@ -20,7 +20,7 @@ bool f_point_d_equals(const Point64 *a, const Point64 *b, const double range)
            s_approximately_f64(a->y, b->y, range);
 }
 
-Point64 f_point_d_zero(void)
+Point64 s_point_zero_f64(void)
 {
     Point64 out;
     out.x = 0;
@@ -29,14 +29,14 @@ Point64 f_point_d_zero(void)
     return out;
 }
 
-bool f_point_d_is_zero(const Point64 *p)
+bool s_point_is_zero_f64(const Point64 *p)
 {
     // TODO: make absolute and < 1e-9 or something like that?
     e_assert(p != NULL);
     return (p->x == 0) && (p->y == 0);
 }
 
-void f_point_d_zero_out(Point64 *p)
+void s_point_zero_out_f64(Point64 *p)
 {
     e_assert(p != NULL);
 
@@ -44,7 +44,7 @@ void f_point_d_zero_out(Point64 *p)
     p->y = 0;
 }
 
-Point64 f_point_d_random(const double min, const double max)
+Point64 s_point_random_f64(const f64 min, const f64 max)
 {
     Point64 out;
     out.x = f_rand_f64(min, max);
@@ -53,7 +53,7 @@ Point64 f_point_d_random(const double min, const double max)
     return out;
 }
 
-void f_point_d_random_in(const double min, const double max, Point64 *out)
+void s_point_random_in_f64(const f64 min, const f64 max, Point64 *out)
 {
     e_assert(out != NULL);
 
@@ -61,24 +61,24 @@ void f_point_d_random_in(const double min, const double max, Point64 *out)
     out->y = f_rand_f64(min, max);
 }
 
-double f_point_d_magnitude(const Point64 *p)
+f64 s_point_magnitude_f64(const Point64 *p)
 {
     e_assert(p != NULL);
 
     return s_sqrt_f64(p->x * p->x + p->y * p->y);
 }
 
-double s_point64_magnitude_squared(const Point64 *p)
+f64 s_point_magnitude_squared_f64(const Point64 *p)
 {
     e_assert(p != NULL);
     return p->x * p->x + p->y * p->y;
 }
 
-Point64 f_point_d_normalize(const Point64 *p)
+Point64 s_point_normalize_f64(const Point64 *p)
 {
     e_assert(p != NULL);
 
-    const double d = f_point_d_magnitude(p);
+    const f64 d = s_point_magnitude_f64(p);
     e_assert(d != 0.0);
 
     Point64 out;
@@ -88,18 +88,18 @@ Point64 f_point_d_normalize(const Point64 *p)
     return out;
 }
 
-void f_point_d_normalize_in(Point64 *p)
+void s_point_normalize_in_f64(Point64 *p)
 {
     e_assert(p != NULL);
 
-    const double d = f_point_d_magnitude(p);
+    const f64 d = s_point_magnitude_f64(p);
     e_assert(d != 0.0);
 
     p->x /= d;
     p->y /= d;
 }
 
-Point64 f_point_d_scale(const Point64 *p, const double scale_factor)
+Point64 s_point_scale_f64(const Point64 *p, const f64 scale_factor)
 {
     e_assert(p != NULL);
 
@@ -110,7 +110,7 @@ Point64 f_point_d_scale(const Point64 *p, const double scale_factor)
     return out;
 }
 
-void s_point_d_scale_in(Point64 *p, const double scale_factor)
+void s_point_scale_in_f64(Point64 *p, const f64 scale_factor)
 {
     e_assert(p != NULL);
 
@@ -118,7 +118,7 @@ void s_point_d_scale_in(Point64 *p, const double scale_factor)
     p->y *= scale_factor;
 }
 
-Point64 f_point_d_divide(const Point64 *p, const double divisor)
+Point64 s_point_divide_f64(const Point64 *p, const f64 divisor)
 {
     e_assert(p != NULL);
 
@@ -129,7 +129,7 @@ Point64 f_point_d_divide(const Point64 *p, const double divisor)
     return out;
 }
 
-void f_point_d_divide_in(const Point64 *p, const double divisor, Point64 *out)
+void s_point_divide_in_f64(const Point64 *p, const f64 divisor, Point64 *out)
 {
     e_assert(p != NULL);
     e_assert(out != NULL);
@@ -139,7 +139,7 @@ void f_point_d_divide_in(const Point64 *p, const double divisor, Point64 *out)
     out->y = p->y / divisor;
 }
 
-Point64 f_point_d_multiply(const Point64 *p, const double scale)
+Point64 s_point_multiply_f64(const Point64 *p, const f64 scale)
 {
     e_assert(p != NULL);
 
@@ -150,7 +150,7 @@ Point64 f_point_d_multiply(const Point64 *p, const double scale)
     return out;
 }
 
-void f_point_d_multiply_in(const Point64 *p, const double scale, Point64 *out)
+void s_point_multiply_in_f64(const Point64 *p, const f64 scale, Point64 *out)
 {
     e_assert(p != NULL);
     e_assert(out != NULL);
@@ -159,7 +159,7 @@ void f_point_d_multiply_in(const Point64 *p, const double scale, Point64 *out)
     out->y = p->y * scale;
 }
 
-Point64 f_point_d_add(const Point64 *a, const Point64 *b)
+Point64 s_point_add_f64(const Point64 *a, const Point64 *b)
 {
     e_assert(a != NULL);
     e_assert(b != NULL);
@@ -171,7 +171,7 @@ Point64 f_point_d_add(const Point64 *a, const Point64 *b)
     return p;
 }
 
-void f_point_d_add_in(Point64 *p_modified, const Point64 *p_added)
+void s_point_add_in_f64(Point64 *p_modified, const Point64 *p_added)
 {
     e_assert(p_modified != NULL);
     e_assert(p_added != NULL);
@@ -180,8 +180,8 @@ void f_point_d_add_in(Point64 *p_modified, const Point64 *p_added)
     p_modified->y += p_added->y;
 }
 
-void f_point_d_add_with_scale_in(Point64 *p_modified, const Point64 *p_added,
-                                 const double scale)
+void s_point_add_scaled_in_f64(Point64 *p_modified, const Point64 *p_added,
+                               const f64 scale)
 {
     e_assert(p_modified != NULL);
     e_assert(p_added != NULL);
@@ -190,7 +190,7 @@ void f_point_d_add_with_scale_in(Point64 *p_modified, const Point64 *p_added,
     p_modified->y += p_added->y * scale;
 }
 
-Point64 f_point_d_subtract(const Point64 *a, const Point64 *b)
+Point64 s_point_subtract_f64(const Point64 *a, const Point64 *b)
 {
     e_assert(a != NULL);
     e_assert(b != NULL);
@@ -202,7 +202,7 @@ Point64 f_point_d_subtract(const Point64 *a, const Point64 *b)
     return p;
 }
 
-void f_point_d_subtract_in(Point64 *p1, const Point64 *p2)
+void s_point_subtract_in_f64(Point64 *p1, const Point64 *p2)
 {
     e_assert(p1 != NULL);
     e_assert(p2 != NULL);
@@ -211,7 +211,7 @@ void f_point_d_subtract_in(Point64 *p1, const Point64 *p2)
     p1->y = p1->y - p2->y;
 }
 
-void f_point_d_subtract_with_scale_in(Point64 *p1, const Point64 *p2, const double scale)
+void s_point_subtract_scaled_in_f64(Point64 *p1, const Point64 *p2, const f64 scale)
 {
     e_assert(p1 != NULL);
     e_assert(p2 != NULL);

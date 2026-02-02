@@ -1,6 +1,6 @@
-#include "memory.h"
+#include "staunch/memory.h"
 
-void f_swap_ptr(void **a, void **b)
+void s_swap_ptr(void **a, void **b)
 {
     void *temp = *a;
     *a = *b;

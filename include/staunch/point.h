@@ -1,16 +1,19 @@
 #ifndef _STAUNCH_POINT_
 #define _STAUNCH_POINT_
 
+#include "staunch/types.h"
+
 #include <stdbool.h>
+
 typedef struct
 {
     union
     {
         struct
         {
-            double x, y;
+            f64 x, y;
         };
-        double arr[2];
+        f64 arr[2];
     };
 } Point64;
 
@@ -18,11 +21,11 @@ typedef struct
 {
     struct
     {
-        float x, y;
+        f32 x, y;
     } p;
 
-    float arr[2];
-} Point_f;
+    f32 arr[2];
+} Point32;
 
 //-----------------------------------------------------------------------------
 // This contains different point types but all with the same API
@@ -33,40 +36,39 @@ typedef struct
 //
 //       Resolve this.
 //-----------------------------------------------------------------------------
+extern void s_point_clone_f64(const Point64 *p, Point64 *out);
+extern bool s_point_equals_f64(const Point64 *a, const Point64 *b, const f64 range);
 
-extern void f_point_d_clone(const Point64 *p, Point64 *out);
-extern bool f_point_d_equals(const Point64 *a, const Point64 *b, const double range);
+extern Point64 s_point_zero_f64(void);
+extern bool s_point_is_zero_f64(const Point64 *p);
+extern void s_point_zero_out_f64(Point64 *p);
 
-extern Point64 f_point_d_zero(void);
-extern bool f_point_d_is_zero(const Point64 *p);
-extern void f_point_d_zero_out(Point64 *p);
+extern Point64 s_point_random_f64(const f64 min, const f64 max);
+extern void s_point_random_in_f64(const f64 min, const f64 max, Point64 *out);
 
-extern Point64 f_point_d_random(const double min, const double max);
-extern void f_point_d_random_in(const double min, const double max, Point64 *out);
+extern f64 s_point_magnitude_f64(const Point64 *p);
+extern f64 s_point_magnitude_squared_f64(const Point64 *p);
 
-extern double f_point_d_magnitude(const Point64 *p);
-extern double s_point64_magnitude_squared(const Point64 *p);
+extern Point64 s_point_normalize_f64(const Point64 *p);
+extern void s_point_normalize_in_f64(Point64 *p);
 
-extern Point64 f_point_d_normalize(const Point64 *p);
-extern void f_point_d_normalize_in(Point64 *p);
+extern Point64 s_point_scale_f64(const Point64 *p, const f64 scale_factor);
+extern void s_point_scale_in_f64(Point64 *p, const f64 scale_factor);
 
-extern Point64 f_point_d_scale(const Point64 *p, const double scale_factor);
-extern void s_point_d_scale_in(Point64 *p, const double scale_factor);
+extern Point64 s_point_divide_f64(const Point64 *p, const f64 divisor);
+extern void s_point_divide_in_f64(const Point64 *p, const f64 divisor, Point64 *out);
 
-extern Point64 f_point_d_divide(const Point64 *p, const double divisor);
-extern void f_point_d_divide_in(const Point64 *p, const double divisor, Point64 *out);
+extern Point64 s_point_multiply_f64(const Point64 *p, const f64 scale);
+extern void s_point_multiply_in_f64(const Point64 *p, const f64 scale, Point64 *out);
 
-extern Point64 f_point_d_multiply(const Point64 *p, const double scale);
-extern void f_point_d_multiply_in(const Point64 *p, const double scale, Point64 *out);
+extern Point64 s_point_add_f64(const Point64 *a, const Point64 *b);
+extern void s_point_add_in_f64(Point64 *p_modified, const Point64 *p_added);
+extern void s_point_add_scaled_in_f64(Point64 *p_modified, const Point64 *p_added,
+                                      const f64 scale);
 
-extern Point64 f_point_d_add(const Point64 *a, const Point64 *b);
-extern void f_point_d_add_in(Point64 *p_modified, const Point64 *p_added);
-extern void f_point_d_add_with_scale_in(Point64 *p_modified, const Point64 *p_added,
-                                        const double scale);
-
-extern Point64 f_point_d_subtract(const Point64 *p1, const Point64 *p2);
-extern void f_point_d_subtract_in(Point64 *p1, const Point64 *p2);
-extern void f_point_d_subtract_with_scale_in(Point64 *p1, const Point64 *p2,
-                                             const double scale);
+extern Point64 s_point_subtract_f64(const Point64 *p1, const Point64 *p2);
+extern void s_point_subtract_in_f64(Point64 *p1, const Point64 *p2);
+extern void s_point_subtract_scaled_in_f64(Point64 *p1, const Point64 *p2,
+                                           const f64 scale);
 
 #endif // _STAUNCH_POINT_
