@@ -7,7 +7,7 @@ int main(void)
     ///////////////////////////////////////////////////////////////////////////
     // s_swap_ptr
     {
-        e_begin("s_swap_ptr");
+        s_exam_begin("s_swap_ptr");
 
         // Swap two int pointers
         {
@@ -18,10 +18,10 @@ int main(void)
 
             s_swap_ptr(&a, &b);
 
-            e_assert(a == &y);
-            e_assert(b == &x);
-            e_assert(*(int *)a == 20);
-            e_assert(*(int *)b == 10);
+            s_assert(a == &y);
+            s_assert(b == &x);
+            s_assert(*(int *)a == 20);
+            s_assert(*(int *)b == 10);
         }
 
         // Swap pointer and NULL
@@ -32,9 +32,9 @@ int main(void)
 
             s_swap_ptr(&a, &b);
 
-            e_assert(a == NULL);
-            e_assert(b == &x);
-            e_assert(*(int *)b == 42);
+            s_assert(a == NULL);
+            s_assert(b == &x);
+            s_assert(*(int *)b == 42);
         }
 
         // Swap two NULLs
@@ -44,8 +44,8 @@ int main(void)
 
             s_swap_ptr(&a, &b);
 
-            e_assert(a == NULL);
-            e_assert(b == NULL);
+            s_assert(a == NULL);
+            s_assert(b == NULL);
         }
 
         // Swap same pointer values
@@ -56,8 +56,8 @@ int main(void)
 
             s_swap_ptr(&a, &b);
 
-            e_assert(a == &x);
-            e_assert(b == &x);
+            s_assert(a == &x);
+            s_assert(b == &x);
         }
 
         // Swap struct pointers
@@ -75,10 +75,10 @@ int main(void)
 
             s_swap_ptr(&a, &b);
 
-            e_assert(a == &p2);
-            e_assert(b == &p1);
-            e_assert(((Point *)a)->x == 3);
-            e_assert(((Point *)b)->x == 1);
+            s_assert(a == &p2);
+            s_assert(b == &p1);
+            s_assert(((Point *)a)->x == 3);
+            s_assert(((Point *)b)->x == 1);
         }
 
         // Double swap returns to original
@@ -91,11 +91,11 @@ int main(void)
             s_swap_ptr(&a, &b);
             s_swap_ptr(&a, &b);
 
-            e_assert(a == &f1);
-            e_assert(b == &f2);
+            s_assert(a == &f1);
+            s_assert(b == &f2);
         }
 
-        e_end();
+        s_exam_end();
     }
 
     return 0;

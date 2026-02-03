@@ -112,61 +112,61 @@ f64 s_max_f64(const f64 a, const f64 b)
 // clamp
 i8 s_clamp_i8(const i8 min, const i8 val, const i8 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 i16 s_clamp_i16(const i16 min, const i16 val, const i16 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 i32 s_clamp_i32(const i32 min, const i32 val, const i32 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 i64 s_clamp_i64(const i64 min, const i64 val, const i64 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u8 s_clamp_u8(const u8 min, const u8 val, const u8 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u16 s_clamp_u16(const u16 min, const u16 val, const u16 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u32 s_clamp_u32(const u32 min, const u32 val, const u32 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 u64 s_clamp_u64(const u64 min, const u64 val, const u64 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 f32 s_clamp_32(const f32 min, const f32 val, const f32 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
 f64 s_clamp_f64(const f64 min, const f64 val, const f64 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);
 }
 
@@ -174,49 +174,49 @@ f64 s_clamp_f64(const f64 min, const f64 val, const f64 max)
 // in between
 bool s_in_between_i8(i16 min, i16 middle, i16 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_i16(i16 min, i16 middle, i16 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_i32(i32 min, i32 middle, i32 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_i64(i64 min, i64 middle, i64 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_u8(u8 min, u8 middle, u8 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_u16(u16 min, u16 middle, u16 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_u32(u32 min, u32 middle, u32 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
 bool s_in_between_u64(u64 min, u64 middle, u64 max)
 {
-    e_assert(min <= max);
+    s_assert(min <= max);
     return min <= middle && middle <= max;
 }
 
@@ -224,7 +224,7 @@ bool s_in_between_u64(u64 min, u64 middle, u64 max)
 // modulus
 i8 s_modulus_i8(i8 number, i8 divisor)
 {
-    e_assert(divisor != 0);
+    s_assert(divisor != 0);
     i8 res = number % divisor;
     if (res < 0)
     {
@@ -235,7 +235,7 @@ i8 s_modulus_i8(i8 number, i8 divisor)
 
 i16 s_modulus_i16(i16 number, i16 divisor)
 {
-    e_assert(divisor != 0);
+    s_assert(divisor != 0);
     i16 res = number % divisor;
     if (res < 0)
     {
@@ -246,7 +246,7 @@ i16 s_modulus_i16(i16 number, i16 divisor)
 
 i32 s_modulus_i32(i32 number, i32 divisor)
 {
-    e_assert(divisor != 0);
+    s_assert(divisor != 0);
     i32 res = number % divisor;
     if (res < 0)
     {
@@ -257,7 +257,7 @@ i32 s_modulus_i32(i32 number, i32 divisor)
 
 i64 s_modulus_i64(i64 number, i64 divisor)
 {
-    e_assert(divisor != 0);
+    s_assert(divisor != 0);
     i64 res = number % divisor;
     if (res != 0)
     {

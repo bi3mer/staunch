@@ -4,11 +4,11 @@
 int main(void)
 {
     {
-        e_begin("Purposeful Fail");
-        e_assert(false);
-        e_end();
+        s_exam_begin("Purposeful Fail");
+        s_assert(false);
+        s_exam_end();
     }
 
-    e_log_summary();
+    s_exam_log_summary();
     return 0;
 }
