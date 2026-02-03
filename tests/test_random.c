@@ -3,10 +3,9 @@
 
 int main(void)
 {
+    S_EXAM("FAIL OKAY")
     {
-        s_exam_begin("Purposeful Fail");
         s_assert(false);
-        s_exam_end();
     }
 
     s_exam_log_summary();

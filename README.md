@@ -23,3 +23,32 @@ All tests are in [test.c](./test.c), which uses [Exam](src/exam.h). To run:
 cd tests
 make test
 ```
+
+## Example Test with Exam
+
+```c
+#include "staunch/exam.h"
+#include <stdlib.h>
+
+int main(void)
+{
+    S_EXAM("Test NULL pointer safety")
+    {
+        int *ptr = NULL;
+        s_assert(ptr != NULL); // This fails and jumps out
+        *ptr = 5;              // doesn't execute
+        s_assert(false);       // doesn't executes
+    }
+
+    S_EXAM("Test normal case")
+    {
+        int x = 5;
+        s_assert(x == 5); // Passes
+        s_assert(x > 0);  // Passes
+    }
+
+    s_exam_log_summary();
+
+    return 0;
+}
+```
