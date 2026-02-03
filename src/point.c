@@ -6,13 +6,13 @@
 #include <math.h>
 #include <stdio.h>
 
-void s_point_clone_f64(const Point64 *p, Point64 *out)
+void s_point64_clone(const Point64 *p, Point64 *out)
 {
     out->x = p->x;
     out->y = p->y;
 }
 
-bool s_point_equals_f64(const Point64 *a, const Point64 *b, const f64 range)
+bool s_point64_equals(const Point64 *a, const Point64 *b, const f64 range)
 {
     s_assert(a != NULL);
     s_assert(b != NULL);
@@ -20,7 +20,7 @@ bool s_point_equals_f64(const Point64 *a, const Point64 *b, const f64 range)
            s_approximately_f64(a->y, b->y, range);
 }
 
-Point64 s_point_zero_f64(void)
+Point64 s_point64_zero(void)
 {
     Point64 out;
     out.x = 0;
@@ -29,14 +29,14 @@ Point64 s_point_zero_f64(void)
     return out;
 }
 
-bool s_point_is_zero_f64(const Point64 *p)
+bool s_point64_is_zero(const Point64 *p)
 {
     // TODO: make absolute and < 1e-9 or something like that?
     s_assert(p != NULL);
     return (p->x == 0) && (p->y == 0);
 }
 
-void s_point_zero_out_f64(Point64 *p)
+void s_point64_zero_out(Point64 *p)
 {
     s_assert(p != NULL);
 
@@ -44,7 +44,7 @@ void s_point_zero_out_f64(Point64 *p)
     p->y = 0;
 }
 
-Point64 s_point_random_f64(const f64 min, const f64 max)
+Point64 s_point64_random(const f64 min, const f64 max)
 {
     Point64 out;
     out.x = s_rand_f64(min, max);
@@ -53,7 +53,7 @@ Point64 s_point_random_f64(const f64 min, const f64 max)
     return out;
 }
 
-void s_point_random_in_f64(const f64 min, const f64 max, Point64 *out)
+void s_point64_random_out(const f64 min, const f64 max, Point64 *out)
 {
     s_assert(out != NULL);
 
@@ -61,24 +61,24 @@ void s_point_random_in_f64(const f64 min, const f64 max, Point64 *out)
     out->y = s_rand_f64(min, max);
 }
 
-f64 s_point_magnitude_f64(const Point64 *p)
+f64 s_point64_magnitude(const Point64 *p)
 {
     s_assert(p != NULL);
 
     return s_sqrt_f64(p->x * p->x + p->y * p->y);
 }
 
-f64 s_point_magnitude_squared_f64(const Point64 *p)
+f64 s_point64_magnitude_squared(const Point64 *p)
 {
     s_assert(p != NULL);
     return p->x * p->x + p->y * p->y;
 }
 
-Point64 s_point_normalize_f64(const Point64 *p)
+Point64 s_point64_normalize(const Point64 *p)
 {
     s_assert(p != NULL);
 
-    const f64 d = s_point_magnitude_f64(p);
+    const f64 d = s_point64_magnitude(p);
     s_assert(d != 0.0);
 
     Point64 out;
@@ -88,37 +88,18 @@ Point64 s_point_normalize_f64(const Point64 *p)
     return out;
 }
 
-void s_point_normalize_in_f64(Point64 *p)
+void s_point64_normalize_in(Point64 *p)
 {
     s_assert(p != NULL);
 
-    const f64 d = s_point_magnitude_f64(p);
+    const f64 d = s_point64_magnitude(p);
     s_assert(d != 0.0);
 
     p->x /= d;
     p->y /= d;
 }
 
-Point64 s_point_scale_f64(const Point64 *p, const f64 scale_factor)
-{
-    s_assert(p != NULL);
-
-    Point64 out;
-    out.x = p->x * scale_factor;
-    out.y = p->y * scale_factor;
-
-    return out;
-}
-
-void s_point_scale_in_f64(Point64 *p, const f64 scale_factor)
-{
-    s_assert(p != NULL);
-
-    p->x *= scale_factor;
-    p->y *= scale_factor;
-}
-
-Point64 s_point_divide_f64(const Point64 *p, const f64 divisor)
+Point64 s_point64_divide(const Point64 *p, const f64 divisor)
 {
     s_assert(p != NULL);
 
@@ -129,37 +110,35 @@ Point64 s_point_divide_f64(const Point64 *p, const f64 divisor)
     return out;
 }
 
-void s_point_divide_in_f64(const Point64 *p, const f64 divisor, Point64 *out)
+void s_point64_divide_in(Point64 *p, const f64 divisor)
 {
     s_assert(p != NULL);
-    s_assert(out != NULL);
     s_assert(fabs(divisor) > 1e-9);
 
-    out->x = p->x / divisor;
-    out->y = p->y / divisor;
+    p->x /= divisor;
+    p->y /= divisor;
 }
 
-Point64 s_point_multiply_f64(const Point64 *p, const f64 scale)
+Point64 s_point64_multiply(const Point64 *p, const f64 multiplier)
 {
     s_assert(p != NULL);
 
     Point64 out;
-    out.x = p->x * scale;
-    out.y = p->y * scale;
+    out.x = p->x * multiplier;
+    out.y = p->y * multiplier;
 
     return out;
 }
 
-void s_point_multiply_in_f64(const Point64 *p, const f64 scale, Point64 *out)
+void s_point64_multiply_in(Point64 *p, const f64 multiplier)
 {
     s_assert(p != NULL);
-    s_assert(out != NULL);
 
-    out->x = p->x * scale;
-    out->y = p->y * scale;
+    p->x *= multiplier;
+    p->y *= multiplier;
 }
 
-Point64 s_point_add_f64(const Point64 *a, const Point64 *b)
+Point64 s_point64_add(const Point64 *a, const Point64 *b)
 {
     s_assert(a != NULL);
     s_assert(b != NULL);
@@ -171,7 +150,7 @@ Point64 s_point_add_f64(const Point64 *a, const Point64 *b)
     return p;
 }
 
-void s_point_add_in_f64(Point64 *p_modified, const Point64 *p_added)
+void s_point64_add_in(Point64 *p_modified, const Point64 *p_added)
 {
     s_assert(p_modified != NULL);
     s_assert(p_added != NULL);
@@ -180,8 +159,7 @@ void s_point_add_in_f64(Point64 *p_modified, const Point64 *p_added)
     p_modified->y += p_added->y;
 }
 
-void s_point_add_scaled_in_f64(Point64 *p_modified, const Point64 *p_added,
-                               const f64 scale)
+void s_point64_add_scaled_in(Point64 *p_modified, const Point64 *p_added, const f64 scale)
 {
     s_assert(p_modified != NULL);
     s_assert(p_added != NULL);
@@ -190,7 +168,7 @@ void s_point_add_scaled_in_f64(Point64 *p_modified, const Point64 *p_added,
     p_modified->y += p_added->y * scale;
 }
 
-Point64 s_point_subtract_f64(const Point64 *a, const Point64 *b)
+Point64 s_point64_subtract(const Point64 *a, const Point64 *b)
 {
     s_assert(a != NULL);
     s_assert(b != NULL);
@@ -202,7 +180,7 @@ Point64 s_point_subtract_f64(const Point64 *a, const Point64 *b)
     return p;
 }
 
-void s_point_subtract_in_f64(Point64 *p1, const Point64 *p2)
+void s_point64_subtract_in(Point64 *p1, const Point64 *p2)
 {
     s_assert(p1 != NULL);
     s_assert(p2 != NULL);
@@ -211,7 +189,7 @@ void s_point_subtract_in_f64(Point64 *p1, const Point64 *p2)
     p1->y = p1->y - p2->y;
 }
 
-void s_point_subtract_scaled_in_f64(Point64 *p1, const Point64 *p2, const f64 scale)
+void s_point64_subtract_scaled_in(Point64 *p1, const Point64 *p2, const f64 scale)
 {
     s_assert(p1 != NULL);
     s_assert(p2 != NULL);
