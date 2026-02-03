@@ -5,22 +5,22 @@
 // Random
 Degree32 s_random_degree32(void)
 {
-    return (Degree32){f_rand_f32(0, S_MAX_DEGREE_32)};
+    return (Degree32){s_rand_f32(0, S_MAX_DEGREE_32)};
 }
 
 Degree64 s_random_degree64(void)
 {
-    return (Degree64){f_rand_f64(0, S_MAX_DEGREE_64)};
+    return (Degree64){s_rand_f64(0, S_MAX_DEGREE_64)};
 }
 
 Radian32 s_random_radian32(void)
 {
-    return (Radian32){f_rand_f32(0, S_2PI_32)};
+    return (Radian32){s_rand_f32(0, S_2PI_32)};
 }
 
 Radian64 s_random_radian64(void)
 {
-    return (Radian64){f_rand_f64(0, S_2PI_64)};
+    return (Radian64){s_rand_f64(0, S_2PI_64)};
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////

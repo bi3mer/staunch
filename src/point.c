@@ -47,8 +47,8 @@ void s_point_zero_out_f64(Point64 *p)
 Point64 s_point_random_f64(const f64 min, const f64 max)
 {
     Point64 out;
-    out.x = f_rand_f64(min, max);
-    out.y = f_rand_f64(min, max);
+    out.x = s_rand_f64(min, max);
+    out.y = s_rand_f64(min, max);
 
     return out;
 }
@@ -57,8 +57,8 @@ void s_point_random_in_f64(const f64 min, const f64 max, Point64 *out)
 {
     e_assert(out != NULL);
 
-    out->x = f_rand_f64(min, max);
-    out->y = f_rand_f64(min, max);
+    out->x = s_rand_f64(min, max);
+    out->y = s_rand_f64(min, max);
 }
 
 f64 s_point_magnitude_f64(const Point64 *p)
