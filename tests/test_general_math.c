@@ -235,8 +235,8 @@ int main(void)
     S_EXAM("s_clamp_i8")
     {
         // Invalid range (should assert)
-        s_exam_expect_assert_fail();
-        s_assert(s_clamp_i8(10, 0, -10));
+        s_exam_expect_fail(s_clamp_i8(10, 0, -10));
+
         // Valid clamps
         s_assert(s_clamp_i8(-10, -15, 10) == -10);     // Below min
         s_assert(s_clamp_i8(-10, 15, 10) == 10);       // Above max
@@ -339,8 +339,8 @@ int main(void)
     S_EXAM("s_in_between_i8")
     {
         // Invalid range (should assert)
-        s_exam_expect_assert_fail();
-        s_in_between_i8(10, 5, -10);
+        s_exam_expect_fail(s_in_between_i8(10, 5, -10));
+
         // Valid checks
         s_assert(s_in_between_i8(-10, -10, 10));  // At min (inclusive)
         s_assert(s_in_between_i8(-10, 10, 10));   // At max (inclusive)
@@ -427,17 +427,18 @@ int main(void)
     S_EXAM("s_modulus_i8")
     {
         // Invalid divisor (should assert)
-        s_exam_expect_assert_fail();
-        s_modulus_i8(5, 0);
-        s_exam_expect_assert_fail();
-        s_modulus_i8(5, -3);
+        s_exam_expect_fail(s_modulus_i8(5, 0));
+        s_exam_expect_fail(s_modulus_i8(5, -3));
+
         // Positive number
         s_assert(s_modulus_i8(10, 3) == 1);
         s_assert(s_modulus_i8(15, 4) == 3);
+
         // Negative number (mathematically correct modulus)
         s_assert(s_modulus_i8(-10, 3) == 2); // -10 % 3 = -1, then -1 + 3 = 2
         s_assert(s_modulus_i8(-15, 4) == 1); // -15 % 4 = -3, then -3 + 4 = 1
         s_assert(s_modulus_i8(-1, 5) == 4);  // -1 % 5 = -1, then -1 + 5 = 4
+
         // Exact division
         s_assert(s_modulus_i8(10, 5) == 0);
         s_assert(s_modulus_i8(-10, 5) == 0);
@@ -447,6 +448,11 @@ int main(void)
     // s_modulus_i16
     S_EXAM("s_modulus_i16")
     {
+        // Invalid divisor (should assert)
+        s_exam_expect_fail(s_modulus_i16(5, 0));
+        s_exam_expect_fail(s_modulus_i16(5, -3));
+
+        // valid tests
         s_assert(s_modulus_i16(100, 7) == 2);
         s_assert(s_modulus_i16(-100, 7) == 5); // -100 % 7 = -2, then -2 + 7 = 5
         s_assert(s_modulus_i16(50, 10) == 0);
@@ -457,6 +463,11 @@ int main(void)
     // s_modulus_i32
     S_EXAM("s_modulus_i32")
     {
+        // Invalid divisor (should assert)
+        s_exam_expect_fail(s_modulus_i32(5, 0));
+        s_exam_expect_fail(s_modulus_i32(5, -3));
+
+        // valid tests
         s_assert(s_modulus_i32(1000, 13) == 12);
         s_assert(s_modulus_i32(-1000, 13) == 1); // -1000 % 13 = -12, then -12 + 13 = 1
         s_assert(s_modulus_i32(360, 360) == 0);
@@ -467,9 +478,13 @@ int main(void)
     // s_modulus_i64
     S_EXAM("s_modulus_i64")
     {
-        s_assert(s_modulus_i64(10000LL, 17LL) == 7LL);
-        s_assert(s_modulus_i64(-10000LL, 17LL) ==
-                 10LL); // -10000 % 17 = -7, then -7 + 17 = 10
+        // Invalid divisor (should assert)
+        s_exam_expect_fail(s_modulus_i64(5, 0));
+        s_exam_expect_fail(s_modulus_i64(5, -3));
+
+        // valid tests
+        s_assert(s_modulus_i64(10000LL, 17LL) == 4LL);
+        s_assert(s_modulus_i64(-10000LL, 17LL) == 13LL);
         s_assert(s_modulus_i64(1000000LL, 1000LL) == 0LL);
     }
 

@@ -4,46 +4,44 @@
 #include "staunch/exam.h"
 #include "staunch/glow.h"
 
-#if BUILD_MODE == 1 // Unit Test TOOD change to 1
-#include <time.h>
+#if BUILD_MODE == 1
 
 ///////////////////////////////////////////////////////////////////////////
-/// hidden globals
 bool _e_expect_assert = false;
 char *_e_name;
 
-unsigned int _e_passed = 0;
-unsigned int _e_total = 0;
+u32 _e_passed = 0;
+u32 _e_total = 0;
 
-unsigned int _e_all_passed = 0;
-unsigned int _e_all_total = 0;
+u32 _e_all_passed = 0;
+u32 _e_all_total = 0;
 
 clock_t _e_begin_time;
 jmp_buf _e_test_env;
 
 ///////////////////////////////////////////////////////////////////////////
 /// Function implementations
-int __s_exam_begin(char *name)
+void __s_exam_begin(char *name)
 {
     _e_name = name;
     _e_passed = 0;
     _e_total = 0;
     _e_begin_time = clock();
     printf("\t%s:\n", name);
-
-    return setjmp(_e_test_env); // Returns 0 first time, non-zero after longjmp
 }
 
 void __s_assert(bool passed, const char *file, int line)
 {
-    bool expecting_failure = _e_expect_assert;
-
-    if (_e_expect_assert)
+    // If expecting a failure and this assertion failed - that's success
+    if (_e_expect_assert && !passed)
     {
         _e_expect_assert = false;
-        passed = !passed; // Invert: failure becomes success
+        ++_e_total;
+        ++_e_passed;
+        longjmp(_e_test_env, 1);
     }
 
+    // Normal assertion handling
     ++_e_total;
     if (passed)
     {
@@ -52,12 +50,6 @@ void __s_assert(bool passed, const char *file, int line)
     else
     {
         printf("\t\t%s::%u failed\n", file, line);
-    }
-
-    // ALWAYS jump if: we were expecting a failure (to stop execution)
-    // OR the assertion actually failed
-    if (expecting_failure || !passed)
-    {
         longjmp(_e_test_env, 1);
     }
 }
@@ -83,11 +75,6 @@ void __s_exam_end(void)
                (double)(end_time - _e_begin_time) / CLOCKS_PER_SEC);
         s_glow_reset();
     }
-}
-
-void s_exam_expect_assert_fail(void)
-{
-    _e_expect_assert = true;
 }
 
 void s_exam_log_summary(void)

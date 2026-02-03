@@ -224,7 +224,7 @@ bool s_in_between_u64(u64 min, u64 middle, u64 max)
 // modulus
 i8 s_modulus_i8(i8 number, i8 divisor)
 {
-    s_assert(divisor != 0);
+    s_assert(divisor > 0);
     i8 res = number % divisor;
     if (res < 0)
     {
@@ -235,7 +235,7 @@ i8 s_modulus_i8(i8 number, i8 divisor)
 
 i16 s_modulus_i16(i16 number, i16 divisor)
 {
-    s_assert(divisor != 0);
+    s_assert(divisor > 0);
     i16 res = number % divisor;
     if (res < 0)
     {
@@ -246,7 +246,7 @@ i16 s_modulus_i16(i16 number, i16 divisor)
 
 i32 s_modulus_i32(i32 number, i32 divisor)
 {
-    s_assert(divisor != 0);
+    s_assert(divisor > 0);
     i32 res = number % divisor;
     if (res < 0)
     {
@@ -257,9 +257,9 @@ i32 s_modulus_i32(i32 number, i32 divisor)
 
 i64 s_modulus_i64(i64 number, i64 divisor)
 {
-    s_assert(divisor != 0);
+    s_assert(divisor > 0);
     i64 res = number % divisor;
-    if (res != 0)
+    if (res < 0)
     {
         res += divisor;
     }
