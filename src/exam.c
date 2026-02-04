@@ -85,12 +85,62 @@ void s_exam_log_summary(void)
 }
 
 #else // debug
+
+#ifdef __linux__
+#include <execinfo.h>
+#include <string.h>
+#include <unistd.h>
+#endif
+
 void __s_assert(const bool condition, const char *file, const int line)
 {
     if (!condition)
     {
-        printf("%s::%i failed assertion\n", file, line);
-        exit(1);
+        fprintf(stderr, "%s::%i failed assertion\n", file, line);
+#ifdef __linux__
+        // Print stack trace on Linux
+        void *buffer[100];
+        int nptrs = backtrace(buffer, 100);
+        fprintf(stderr, "Stack trace:\n");
+
+        char **strings = backtrace_symbols(buffer, nptrs);
+        if (strings != NULL)
+        {
+            char exe_path[1024];
+            ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
+            if (len != -1)
+            {
+                exe_path[len] = '\0';
+            }
+
+            for (int i = 0; i < nptrs; i++)
+            {
+                fprintf(stderr, "%s\n", strings[i]);
+
+                // Extract offset from strings[i] which looks like:
+                // ./bin/billiards(function+0x123) [0xaddr]
+                char *offset_start = strchr(strings[i], '+');
+                char *offset_end = strchr(strings[i], ')');
+                if (offset_start != NULL && offset_end != NULL && len != -1)
+                {
+                    // Extract just the hex offset (e.g., "0x123")
+                    int offset_len = offset_end - offset_start - 1;
+                    char offset[32];
+                    strncpy(offset, offset_start + 1, offset_len);
+                    offset[offset_len] = '\0';
+
+                    char cmd[2048];
+                    snprintf(cmd, sizeof(cmd), "addr2line -e %s -f -p -i %s 2>/dev/null",
+                             exe_path, offset);
+                    system(cmd);
+                }
+            }
+            free(strings);
+        }
+#endif
+        fflush(stderr);
+        abort();
     }
 }
+
 #endif
