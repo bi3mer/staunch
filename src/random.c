@@ -75,14 +75,27 @@ u32 s_rand_u32(const u32 min, const u32 max)
 {
     s_assert(max >= min);
     xorshift64();
-    return min + (s_state % (max - min + 1));
+
+    if (min == 0 && max == UINT32_MAX)
+    {
+        return (u32)s_state;
+    }
+
+    return min + ((u32)s_state % (max - min + 1));
 }
 
 u64 s_rand_u64(const u64 min, const u64 max)
 {
     s_assert(max >= min);
     xorshift64();
-    return min + (s_state % (max - min + 1));
+
+    u64 range = max - min;
+    if (range == UINT64_MAX)
+    {
+        return min + s_state;
+    }
+
+    return min + (s_state % (range + 1));
 }
 
 //

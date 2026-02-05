@@ -1,3 +1,4 @@
+#include <X11/X.h>
 #include <stdio.h>
 
 #include "staunch/exam.h"
@@ -40,7 +41,6 @@ int main(void)
                 ++falses;
         }
 
-        // should have some of each
         s_assert(trues > 0);
         s_assert(falses > 0);
     }
@@ -50,21 +50,27 @@ int main(void)
     S_EXAM("s_rand_u8")
     {
         s_rand_init(42);
-
-        // range check
         for (int i = 0; i < 1000; ++i)
         {
             u8 val = s_rand_u8(10, 20);
             s_assert(val >= 10 && val <= 20);
         }
+        u8 fixed = s_rand_u8(99, 99);
+        s_assert(fixed == 99);
 
-        // min == max
-        u8 fixed = s_rand_u8(50, 50);
-        s_assert(fixed == 50);
+        // Test full range (should work without fix since no overflow occurs)
+        for (int i = 0; i < 100; ++i)
+        {
+            u8 val = s_rand_u8(0, UINT8_MAX);
+            s_assert(val >= 0 && val <= UINT8_MAX);
+        }
 
-        // full range
-        u8 full = s_rand_u8(0, 255);
-        s_assert(full <= 255);
+        // Test edge cases near maximum values
+        for (int i = 0; i < 100; ++i)
+        {
+            u8 val = s_rand_u8(UINT8_MAX - 10, UINT8_MAX);
+            s_assert(val >= UINT8_MAX - 10 && val <= UINT8_MAX);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -80,15 +86,27 @@ int main(void)
     S_EXAM("s_rand_u16")
     {
         s_rand_init(42);
-
         for (int i = 0; i < 1000; ++i)
         {
-            u16 val = s_rand_u16(100, 500);
-            s_assert(val >= 100 && val <= 500);
+            u16 val = s_rand_u16(100, 200);
+            s_assert(val >= 100 && val <= 200);
+        }
+        u16 fixed = s_rand_u16(9999, 9999);
+        s_assert(fixed == 9999);
+
+        // Test full range (should work without fix since no overflow occurs)
+        for (int i = 0; i < 100; ++i)
+        {
+            u16 val = s_rand_u16(0, UINT16_MAX);
+            s_assert(val >= 0 && val <= UINT16_MAX);
         }
 
-        u16 fixed = s_rand_u16(1000, 1000);
-        s_assert(fixed == 1000);
+        // Test edge cases near maximum values
+        for (int i = 0; i < 100; ++i)
+        {
+            u16 val = s_rand_u16(UINT16_MAX - 100, UINT16_MAX);
+            s_assert(val >= UINT16_MAX - 100 && val <= UINT16_MAX);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -96,15 +114,28 @@ int main(void)
     S_EXAM("s_rand_u32")
     {
         s_rand_init(42);
-
         for (int i = 0; i < 1000; ++i)
         {
             u32 val = s_rand_u32(1000, 2000);
             s_assert(val >= 1000 && val <= 2000);
         }
-
         u32 fixed = s_rand_u32(999999, 999999);
         s_assert(fixed == 999999);
+
+        // Test full range (this is what was causing the crash)
+        for (int i = 0; i < 100; ++i)
+        {
+            u32 val = s_rand_u32(0, UINT32_MAX);
+            // Should not crash and should be in valid range (always true for full range)
+            s_assert(val >= 0 && val <= UINT32_MAX);
+        }
+
+        // Test edge cases near maximum values
+        for (int i = 0; i < 100; ++i)
+        {
+            u32 val = s_rand_u32(UINT32_MAX - 1000, UINT32_MAX);
+            s_assert(val >= UINT32_MAX - 1000 && val <= UINT32_MAX);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -112,15 +143,28 @@ int main(void)
     S_EXAM("s_rand_u64")
     {
         s_rand_init(42);
-
         for (int i = 0; i < 1000; ++i)
         {
             u64 val = s_rand_u64(10000, 20000);
             s_assert(val >= 10000 && val <= 20000);
         }
-
         u64 fixed = s_rand_u64(123456789, 123456789);
         s_assert(fixed == 123456789);
+
+        // Test full range (this is what was causing the crash)
+        for (int i = 0; i < 100; ++i)
+        {
+            u64 val = s_rand_u64(0, UINT64_MAX);
+            // Should not crash and should be in valid range (always true for full range)
+            s_assert(val >= 0 && val <= UINT64_MAX);
+        }
+
+        // Test edge cases near maximum values
+        for (int i = 0; i < 100; ++i)
+        {
+            u64 val = s_rand_u64(UINT64_MAX - 1000, UINT64_MAX);
+            s_assert(val >= UINT64_MAX - 1000 && val <= UINT64_MAX);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
