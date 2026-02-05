@@ -85,9 +85,9 @@ void s_exam_log_summary(void)
 }
 
 #else // debug
-
 #ifdef __linux__
 #include <execinfo.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #endif
@@ -98,13 +98,16 @@ void __s_assert(const bool condition, const char *file, const int line)
     {
         fprintf(stderr, "%s::%i failed assertion\n", file, line);
 #ifdef __linux__
-        // Print stack trace on Linux
         void *buffer[100];
         int nptrs = backtrace(buffer, 100);
         fprintf(stderr, "Stack trace:\n");
 
         char **strings = backtrace_symbols(buffer, nptrs);
-        if (strings != NULL)
+        if (strings == NULL)
+        {
+            fprintf(stderr, "Failed to get backtrace symbols\n");
+        }
+        else
         {
             char exe_path[1024];
             ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
@@ -113,25 +116,40 @@ void __s_assert(const bool condition, const char *file, const int line)
                 exe_path[len] = '\0';
             }
 
+            // Get base address from /proc/self/maps
+            unsigned long base_addr = 0;
+            FILE *maps = fopen("/proc/self/maps", "r");
+            if (maps)
+            {
+                char line_buf[512];
+                if (fgets(line_buf, sizeof(line_buf), maps))
+                {
+                    sscanf(line_buf, "%lx", &base_addr);
+                }
+                fclose(maps);
+            }
+
             for (int i = 0; i < nptrs; i++)
             {
                 fprintf(stderr, "%s\n", strings[i]);
 
-                // Extract offset from strings[i] which looks like:
-                // ./bin/billiards(function+0x123) [0xaddr]
-                char *offset_start = strchr(strings[i], '+');
-                char *offset_end = strchr(strings[i], ')');
-                if (offset_start != NULL && offset_end != NULL && len != -1)
+                // Extract address from [0xaddr]
+                char *addr_start = strchr(strings[i], '[');
+                char *addr_end = strchr(strings[i], ']');
+
+                if (addr_start != NULL && addr_end != NULL && len != -1 && base_addr != 0)
                 {
-                    // Extract just the hex offset (e.g., "0x123")
-                    int offset_len = offset_end - offset_start - 1;
-                    char offset[32];
-                    strncpy(offset, offset_start + 1, offset_len);
-                    offset[offset_len] = '\0';
+                    addr_start++; // Skip '['
+                    unsigned long runtime_addr;
+                    sscanf(addr_start, "%lx", &runtime_addr);
+
+                    // Calculate offset from base
+                    unsigned long offset = runtime_addr - base_addr;
 
                     char cmd[2048];
-                    snprintf(cmd, sizeof(cmd), "addr2line -e %s -f -p -i %s 2>/dev/null",
-                             exe_path, offset);
+                    snprintf(cmd, sizeof(cmd),
+                             "addr2line -e %s -f -p -i 0x%lx 2>/dev/null", exe_path,
+                             offset);
                     system(cmd);
                 }
             }
@@ -142,5 +160,4 @@ void __s_assert(const bool condition, const char *file, const int line)
         abort();
     }
 }
-
 #endif
