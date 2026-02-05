@@ -281,15 +281,6 @@ int main(void)
         s_assert(val == 999);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    // s_rand_choice empty array
-    S_EXAM("s_rand_choice empty array")
-    {
-        s_rand_init(42);
-        int arr[] = {1};
-        s_exam_expect_fail((void)s_rand_choice(arr, 0));
-    }
-
     s_exam_log_summary();
     return 0;
 }

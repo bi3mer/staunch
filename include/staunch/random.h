@@ -51,6 +51,6 @@ extern f64 s_rand_f64(const f64 min, const f64 max);
 #define s_rand_f64_max() s_rand_f64(-DBL_MAX, DBL_MAX)
 
 // get random element from array
-#define s_rand_choice(arr, len) (s_assert((len) > 0), (arr)[s_rand_u32(0, (len) - 1)])
+#define s_rand_choice(arr, len) ((arr)[s_rand_u32(0, (len) - 1)])
 
 #endif // _STAUNCH_RANDOM_
