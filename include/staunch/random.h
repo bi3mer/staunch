@@ -48,9 +48,9 @@ extern f64 s_rand_f64(const f64 min, const f64 max);
 // generate double float between a 0 and 1
 #define s_rand_f64_01() s_rand_f64(0.0, 1.0)
 // generate double float between the minimum and maximum values of floats
-#define s_rand_d_max() s_rand_f64(-DBL_MAX, DBL_MAX)
+#define s_rand_f64_max() s_rand_f64(-DBL_MAX, DBL_MAX)
 
 // get random element from array
-#define s_random_choice(arr, len) (arr[s_rand_u32(0, (len) - 1)])
+#define s_rand_choice(arr, len) (s_assert((len) > 0), (arr)[s_rand_u32(0, (len) - 1)])
 
 #endif // _STAUNCH_RANDOM_
