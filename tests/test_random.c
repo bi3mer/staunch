@@ -1,4 +1,3 @@
-#include <X11/X.h>
 #include <stdio.h>
 
 #include "staunch/exam.h"
