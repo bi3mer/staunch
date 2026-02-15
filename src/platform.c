@@ -18,13 +18,13 @@ void s_save_directory(const char *dir_name, char *save_path, u32 size)
     char *appdata = getenv("APPDATA");
     if (appdata)
     {
-        snprintf(save_path, size, "%s\\%s", appdata, game_name);
+        snprintf(save_path, size, "%s\\%s", appdata, dir_name);
     }
 #elif __APPLE__
     const char *home = getenv("HOME");
     if (home)
     {
-        snprintf(save_path, size, "%s/Library/Application Support/%s", home, game_name);
+        snprintf(save_path, size, "%s/Library/Application Support/%s", home, dir_name);
     }
 #else // Linux
     const char *home = getenv("HOME");
