@@ -1,6 +1,7 @@
 #ifndef _STAUNCH_TYPES_
 #define _STAUNCH_TYPES_
 
+#include <stddef.h>
 #include <stdint.h>
 
 typedef int8_t i8;
@@ -15,5 +16,7 @@ typedef uint64_t u64;
 
 typedef float f32;
 typedef double f64;
+
+typedef size_t st;
 
 #endif // _STAUNCH_TYPES_
