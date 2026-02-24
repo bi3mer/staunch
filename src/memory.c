@@ -18,7 +18,7 @@ void s_swap_bytes(void *a, void *b, st element_size)
 
     while (element_size > 0)
     {
-        st chunk = element_size < sizeof(tmp) ? element_size : sizeof(tmp);
+        const st chunk = element_size < sizeof(tmp) ? element_size : sizeof(tmp);
 
         memcpy(tmp, ca, chunk);
         memcpy(ca, cb, chunk);
