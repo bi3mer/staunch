@@ -3,6 +3,7 @@
 
 #include "staunch/exam.h"
 #include "staunch/glow.h"
+#include "staunch/memory.h"
 
 #if BUILD_MODE == 1
 
@@ -153,7 +154,8 @@ void __s_assert(const bool condition, const char *file, const int line)
                     system(cmd);
                 }
             }
-            free(strings);
+
+            S_FREE_MALLOC(strings);
         }
 #endif
         fflush(stderr);
