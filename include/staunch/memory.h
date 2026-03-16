@@ -3,6 +3,13 @@
 
 #include "staunch/types.h"
 
+#define S_FREE_MALLOC(ptr)                                                               \
+    do                                                                                   \
+    {                                                                                    \
+        free(ptr);                                                                       \
+        (ptr) = NULL;                                                                    \
+    } while (0)
+
 // Swap two pointers
 extern void s_swap_ptr(void **a, void **b);
 // Swap bytes of memory

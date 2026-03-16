@@ -1,6 +1,7 @@
 #include "staunch/exam.h"
 #include "staunch/memory.h"
 #include <stddef.h> // NULL
+#include <stdlib.h>
 
 typedef struct
 {
@@ -192,6 +193,54 @@ int main(void)
 
             s_assert(c1 == 'Z');
             s_assert(c2 == 'A');
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // S_FREE_MALLOC
+    S_EXAM("S_FREE_MALLOC")
+    {
+        // Free a malloc'd int and ensure pointer is NULL
+        {
+            i32 *ptr = malloc(sizeof(i32));
+            s_assert(ptr != NULL);
+            S_FREE_MALLOC(ptr);
+            s_assert(ptr == NULL);
+        }
+
+        // Free a malloc'd struct and ensure pointer is NULL
+        {
+            Point *ptr = malloc(sizeof(Point));
+            s_assert(ptr != NULL);
+            ptr->x = 1;
+            ptr->y = 2;
+            S_FREE_MALLOC(ptr);
+            s_assert(ptr == NULL);
+        }
+
+        // Free a malloc'd array and ensure pointer is NULL
+        {
+            i64 *ptr = malloc(sizeof(i64) * 64);
+            s_assert(ptr != NULL);
+            S_FREE_MALLOC(ptr);
+            s_assert(ptr == NULL);
+        }
+
+        // Double free is safe (ptr is NULL after first free)
+        {
+            i32 *ptr = malloc(sizeof(i32));
+            s_assert(ptr != NULL);
+            S_FREE_MALLOC(ptr);
+            s_assert(ptr == NULL);
+            S_FREE_MALLOC(ptr); // free(NULL) is a no-op, ptr stays NULL
+            s_assert(ptr == NULL);
+        }
+
+        // Free a NULL pointer (no-op, no crash)
+        {
+            i32 *ptr = NULL;
+            S_FREE_MALLOC(ptr);
+            s_assert(ptr == NULL);
         }
     }
 
