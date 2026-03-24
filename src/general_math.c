@@ -158,7 +158,7 @@ u64 s_clamp_u64(const u64 min, const u64 val, const u64 max)
     return val < min ? min : (val > max ? max : val);
 }
 
-f32 s_clamp_32(const f32 min, const f32 val, const f32 max)
+f32 s_clamp_f32(const f32 min, const f32 val, const f32 max)
 {
     s_assert(min <= max);
     return val < min ? min : (val > max ? max : val);

@@ -84,7 +84,7 @@ extern u32 s_clamp_u32(const u32 min, const u32 val, const u32 max);
 extern u64 s_clamp_u64(const u64 min, const u64 val, const u64 max);
 
 // clamp val between min and max for f32
-extern f32 s_clamp_32(const f32 min, const f32 val, const f32 max);
+extern f32 s_clamp_f32(const f32 min, const f32 val, const f32 max);
 // clamp val between min and max for f64
 extern f64 s_clamp_f64(const f64 min, const f64 val, const f64 max);
 

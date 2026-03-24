@@ -315,13 +315,13 @@ int main(void)
 
     ///////////////////////////////////////////////////////////////////////////
     // s_clamp_32 (f32)
-    S_EXAM("s_clamp_32")
+    S_EXAM("s_clamp_f32")
     {
-        s_assert(s_clamp_32(-1.0f, -2.0f, 1.0f) == -1.0f);
-        s_assert(s_clamp_32(-1.0f, 2.0f, 1.0f) == 1.0f);
-        s_assert(s_clamp_32(-1.0f, 0.5f, 1.0f) == 0.5f);
-        s_assert(s_clamp_32(0.0f, -0.1f, 1.0f) == 0.0f);
-        s_assert(s_clamp_32(0.0f, 1.1f, 1.0f) == 1.0f);
+        s_assert(s_clamp_f32(-1.0f, -2.0f, 1.0f) == -1.0f);
+        s_assert(s_clamp_f32(-1.0f, 2.0f, 1.0f) == 1.0f);
+        s_assert(s_clamp_f32(-1.0f, 0.5f, 1.0f) == 0.5f);
+        s_assert(s_clamp_f32(0.0f, -0.1f, 1.0f) == 0.0f);
+        s_assert(s_clamp_f32(0.0f, 1.1f, 1.0f) == 1.0f);
     }
 
     ///////////////////////////////////////////////////////////////////////////
