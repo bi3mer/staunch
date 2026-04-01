@@ -5,11 +5,11 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
 
 void s_point64_clone(const Point64 *p, Point64 *out)
 {
-    out->x = p->x;
-    out->y = p->y;
+    memcpy(out, p, sizeof(Point64));
 }
 
 bool s_point64_equals(const Point64 *a, const Point64 *b, const f64 range)
@@ -202,8 +202,7 @@ void s_point64_subtract_scaled_in(Point64 *p1, const Point64 *p2, const f64 scal
 /////////////////////////////////////////////////////////////////////////////////////////
 void s_point32_clone(const Point32 *p, Point32 *out)
 {
-    out->x = p->x;
-    out->y = p->y;
+    memcpy(out, p, sizeof(Point32));
 }
 
 bool s_point32_equals(const Point32 *a, const Point32 *b, const f32 range)
