@@ -4,7 +4,6 @@
 #include "staunch/random.h"
 
 #include <math.h>
-#include <stdio.h>
 #include <string.h>
 
 void s_point64_clone(const Point64 *p, Point64 *out)
