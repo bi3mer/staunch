@@ -498,6 +498,17 @@ int main(void)
         s_assert(s_lerp_f32(-10.f, 10.f, 0.0f) == -10.0f);
         s_assert(s_lerp_f32(-10.f, 10.f, 0.5f) == 0.0f);
         s_assert(s_lerp_f32(-10.f, 10.f, 1.0f) == 10.0f);
+
+        s_assert(s_lerp_f32(0.f, 100.f, 0.25f) == 25.0f);
+        s_assert(s_lerp_f32(0.f, 100.f, 0.75f) == 75.0f);
+
+        s_assert(s_lerp_f32(10.f, -10.f, 0.0f) == 10.0f);
+        s_assert(s_lerp_f32(10.f, -10.f, 0.5f) == 0.0f);
+        s_assert(s_lerp_f32(10.f, -10.f, 1.0f) == -10.0f);
+
+        s_assert(s_lerp_f32(5.f, 5.f, 0.0f) == 5.0f);
+        s_assert(s_lerp_f32(5.f, 5.f, 0.5f) == 5.0f);
+        s_assert(s_lerp_f32(5.f, 5.f, 1.0f) == 5.0f);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -510,6 +521,17 @@ int main(void)
         s_assert(s_lerp_f64(-10.0, 10.0, 0.00) == -10.0);
         s_assert(s_lerp_f64(-10.0, 10.0, 0.50) == 0.0);
         s_assert(s_lerp_f64(-10.0, 10.0, 1.00) == 10.0);
+
+        s_assert(s_lerp_f64(0.0, 100.0, 0.25) == 25.0);
+        s_assert(s_lerp_f64(0.0, 100.0, 0.75) == 75.0);
+
+        s_assert(s_lerp_f64(10.0, -10.0, 0.00) == 10.0);
+        s_assert(s_lerp_f64(10.0, -10.0, 0.50) == 0.0);
+        s_assert(s_lerp_f64(10.0, -10.0, 1.00) == -10.0);
+
+        s_assert(s_lerp_f64(5.0, 5.0, 0.00) == 5.0);
+        s_assert(s_lerp_f64(5.0, 5.0, 0.50) == 5.0);
+        s_assert(s_lerp_f64(5.0, 5.0, 1.00) == 5.0);
     }
 
     s_exam_log_summary();

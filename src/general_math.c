@@ -270,10 +270,10 @@ i64 s_modulus_i64(i64 number, i64 divisor)
 // lerp
 f32 s_lerp_f32(f32 start, f32 end, f32 alpha)
 {
-    s_assert(alpha >= 0.0);
-    s_assert(alpha <= 1.0);
+    s_assert(alpha >= 0.0f);
+    s_assert(alpha <= 1.0f);
 
-    return start * (1 - alpha) + end * alpha;
+    return start * (1.0f - alpha) + end * alpha;
 }
 
 f64 s_lerp_f64(f64 start, f64 end, f64 alpha)
@@ -281,5 +281,5 @@ f64 s_lerp_f64(f64 start, f64 end, f64 alpha)
     s_assert(alpha >= 0.0);
     s_assert(alpha <= 1.0);
 
-    return start * (1 - alpha) + end * alpha;
+    return start * (1.0 - alpha) + end * alpha;
 }
