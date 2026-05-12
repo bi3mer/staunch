@@ -488,6 +488,30 @@ int main(void)
         s_assert(s_modulus_i64(1000000LL, 1000LL) == 0LL);
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // s_lerp_f32
+    S_EXAM("s_lerp_f32")
+    {
+        s_exam_expect_fail(s_lerp_f32(-100.f, 12.f, -0.0001f));
+        s_exam_expect_fail(s_lerp_f32(-100.f, 12.f, 1.0001f));
+
+        s_assert(s_lerp_f32(-10.f, 10.f, 0.0f) == -10.0f);
+        s_assert(s_lerp_f32(-10.f, 10.f, 0.5f) == 0.0f);
+        s_assert(s_lerp_f32(-10.f, 10.f, 1.0f) == 10.0f);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // s_lerp_f64
+    S_EXAM("s_lerp_f64")
+    {
+        s_exam_expect_fail(s_lerp_f64(-100.0, 12.0, -0.0001));
+        s_exam_expect_fail(s_lerp_f64(-100.0, 12.0, 1.0001));
+
+        s_assert(s_lerp_f64(-10.0, 10.0, 0.00) == -10.0);
+        s_assert(s_lerp_f64(-10.0, 10.0, 0.50) == 0.0);
+        s_assert(s_lerp_f64(-10.0, 10.0, 1.00) == 10.0);
+    }
+
     s_exam_log_summary();
     return 0;
 }

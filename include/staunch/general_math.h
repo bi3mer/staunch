@@ -123,4 +123,10 @@ extern i32 s_modulus_i32(i32 number, i32 divisor);
 // mathematically correct modulus that can handle negative values for i64
 extern i64 s_modulus_i64(i64 number, i64 divisor);
 
+/// Lerp
+// Lineraly interpolate between start and end, alpha between 0.0 and 1.0 for f32
+extern f32 s_lerp_f32(f32 start, f32 end, f32 alpha);
+// Lineraly interpolate between start and end, alpha between 0.0 and 1.0 for f64
+extern f64 s_lerp_f64(f64 start, f64 end, f64 alpha);
+
 #endif // _STAUNCH_GENERAL_MATH_
