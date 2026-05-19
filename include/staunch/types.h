@@ -19,4 +19,6 @@ typedef double f64;
 
 typedef size_t st;
 
+#define MAX_U8 255
+
 #endif // _STAUNCH_TYPES_
