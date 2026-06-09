@@ -173,7 +173,7 @@ int main(void)
     S_EXAM("s_point64_multiply")
     {
         Point64 p = {3.0, 4.0};
-        Point64 result = s_point64_multiply(&p, 2.0);
+        Point64 result = s_point_64_scale(&p, 2.0);
         s_assert(s_approximately_f64(result.x, 6.0, EPSILON_F64));
         s_assert(s_approximately_f64(result.y, 8.0, EPSILON_F64));
     }
@@ -183,7 +183,7 @@ int main(void)
     S_EXAM("s_point64_multiply_in")
     {
         Point64 p = {3.0, 4.0};
-        s_point64_multiply_in(&p, 2.0);
+        s_point_64_scale_in(&p, 2.0);
         s_assert(s_approximately_f64(p.x, 6.0, EPSILON_F64));
         s_assert(s_approximately_f64(p.y, 8.0, EPSILON_F64));
     }
@@ -447,7 +447,7 @@ int main(void)
     S_EXAM("s_point32_multiply")
     {
         Point32 p = {3.0f, 4.0f};
-        Point32 result = s_point32_multiply(&p, 2.0f);
+        Point32 result = s_point32_scale(&p, 2.0f);
         s_assert(s_approximately_f32(result.x, 6.0f, EPSILON_F32));
         s_assert(s_approximately_f32(result.y, 8.0f, EPSILON_F32));
     }
@@ -457,7 +457,7 @@ int main(void)
     S_EXAM("s_point32_multiply_in")
     {
         Point32 p = {3.0f, 4.0f};
-        s_point32_multiply_in(&p, 2.0f);
+        s_point32_scale_in(&p, 2.0f);
         s_assert(s_approximately_f32(p.x, 6.0f, EPSILON_F32));
         s_assert(s_approximately_f32(p.y, 8.0f, EPSILON_F32));
     }
