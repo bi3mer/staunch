@@ -69,10 +69,10 @@ extern Point64 s_point64_divide(const Point64 *p, const f64 divisor);
 extern void s_point64_divide_in(Point64 *p, const f64 divisor);
 
 // Returns p multiplied by scale
-extern Point64 s_point_64_scale(const Point64 *p, const f64 scale);
+extern Point64 s_point64_scale(const Point64 *p, const f64 scale);
 
 // Multiplies p by scale in place
-extern void s_point_64_scale_in(Point64 *p, const f64 scale);
+extern void s_point64_scale_in(Point64 *p, const f64 scale);
 
 // Returns the sum of a and b
 extern Point64 s_point64_add(const Point64 *a, const Point64 *b);

@@ -118,7 +118,7 @@ void s_point64_divide_in(Point64 *p, const f64 divisor)
     p->y /= divisor;
 }
 
-Point64 s_point_64_scale(const Point64 *p, const f64 multiplier)
+Point64 s_point64_scale(const Point64 *p, const f64 multiplier)
 {
     s_assert(p != NULL);
 
@@ -129,7 +129,7 @@ Point64 s_point_64_scale(const Point64 *p, const f64 multiplier)
     return out;
 }
 
-void s_point_64_scale_in(Point64 *p, const f64 multiplier)
+void s_point64_scale_in(Point64 *p, const f64 multiplier)
 {
     s_assert(p != NULL);
 
