@@ -1,3 +1,7 @@
+#ifndef _WIN32
+#define _POSIX_C_SOURCE 200112L
+#endif
+
 #include "staunch/exam.h"
 #include "staunch/platform.h"
 
@@ -47,14 +51,17 @@ int main(void)
         // basic functionality
         {
             char save_path[512] = {0};
-            s_save_directory("TestGame", save_path, 512);
+            bool ok = s_save_directory("TestGame", save_path, 512);
+            s_assert(ok == true);
             s_assert(strlen(save_path) > 0);
             s_assert(strstr(save_path, "TestGame") != NULL);
         }
+
         // platform-specific paths
         {
             char save_path[512] = {0};
-            s_save_directory("MyGame", save_path, 512);
+            bool ok = s_save_directory("MyGame", save_path, 512);
+            s_assert(ok == true);
 #ifdef _WIN32
             s_assert(strstr(save_path, "AppData") != NULL);
             s_assert(strstr(save_path, "\\") != NULL);
@@ -64,19 +71,61 @@ int main(void)
             s_assert(strstr(save_path, ".local/share") != NULL);
 #endif
         }
+
         // different game names
         {
             char path1[512] = {0};
             char path2[512] = {0};
-            s_save_directory("Game1", path1, 512);
-            s_save_directory("Game2", path2, 512);
+            bool ok1 = s_save_directory("Game1", path1, 512);
+            bool ok2 = s_save_directory("Game2", path2, 512);
+            s_assert(ok1 == true);
+            s_assert(ok2 == true);
             s_assert(strcmp(path1, path2) != 0);
         }
+
         // buffer size respected
         {
             char small_buf[20] = {0};
-            s_save_directory("VeryLongGameNameThatExceedsBuffer", small_buf, 20);
+            bool ok =
+                s_save_directory("VeryLongGameNameThatExceedsBuffer", small_buf, 20);
+            s_assert(ok == true);
             s_assert(strlen(small_buf) < 20); // snprintf should truncate
+        }
+
+        // missing home/config env var returns false and clears save_path
+        {
+            char save_path[512] = {'X', '\0'};
+#ifdef _WIN32
+            char old_appdata[512] = {0};
+            DWORD old_len =
+                GetEnvironmentVariableA("APPDATA", old_appdata, sizeof(old_appdata));
+            SetEnvironmentVariableA("APPDATA", NULL);
+
+            bool ok = s_save_directory("MissingEnvGame", save_path, 512);
+
+            if (old_len > 0)
+            {
+                SetEnvironmentVariableA("APPDATA", old_appdata);
+            }
+#else
+            const char *old_home_ptr = getenv("HOME");
+            bool had_home = old_home_ptr != NULL;
+            char old_home[512] = {0};
+            if (had_home)
+            {
+                snprintf(old_home, sizeof(old_home), "%s", old_home_ptr);
+            }
+            unsetenv("HOME");
+
+            bool ok = s_save_directory("MissingEnvGame", save_path, 512);
+
+            if (had_home)
+            {
+                setenv("HOME", old_home, 1);
+            }
+#endif
+            s_assert(ok == false);
+            s_assert(save_path[0] == '\0');
         }
     }
 

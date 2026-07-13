@@ -12,27 +12,33 @@
 #include <sys/types.h>
 #endif
 
-void s_save_directory(const char *dir_name, char *save_path, u32 size)
+bool s_save_directory(const char *dir_name, char *save_path, u32 size)
 {
 #ifdef _WIN32
     char *appdata = getenv("APPDATA");
     if (appdata)
     {
         snprintf(save_path, size, "%s\\%s", appdata, dir_name);
+        return true;
     }
 #elif __APPLE__
     const char *home = getenv("HOME");
     if (home)
     {
         snprintf(save_path, size, "%s/Library/Application Support/%s", home, dir_name);
+        return true;
     }
 #else // Linux
     const char *home = getenv("HOME");
     if (home)
     {
         snprintf(save_path, size, "%s/.local/share/%s", home, dir_name);
+        return true;
     }
 #endif
+
+    save_path[0] = '\0';
+    return false;
 }
 
 bool s_make_dir_recursively(const char *path)
