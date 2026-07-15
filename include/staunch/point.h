@@ -38,7 +38,7 @@ extern bool s_point64_equals(const Point64 *a, const Point64 *b, const f64 range
 // Returns a point with x=0 and y=0
 extern Point64 s_point64_zero(void);
 
-// Returns true if both x and y are exactly 0
+// Returns true if both x and y are within POINT64_ZERO_EPSILON of 0
 extern bool s_point64_is_zero(const Point64 *p);
 
 // Sets both x and y of p to 0
@@ -104,7 +104,7 @@ extern bool s_point32_equals(const Point32 *a, const Point32 *b, const f32 range
 // Returns a point with x=0 and y=0
 extern Point32 s_point32_zero(void);
 
-// Returns true if both x and y are exactly 0
+// Returns true if both x and y are within POINT32_ZERO_EPSILON of 0
 extern bool s_point32_is_zero(const Point32 *p);
 
 // Sets both x and y of p to 0

@@ -30,9 +30,9 @@ Point64 s_point64_zero(void)
 
 bool s_point64_is_zero(const Point64 *p)
 {
-    // TODO: make absolute and < 1e-9 or something like that?
     s_assert(p != NULL);
-    return (p->x == 0) && (p->y == 0);
+    return s_approximately_f64(p->x, 0.0, POINT64_ZERO_EPSILON) &&
+           s_approximately_f64(p->y, 0.0, POINT64_ZERO_EPSILON);
 }
 
 void s_point64_zero_out(Point64 *p)
@@ -224,7 +224,8 @@ Point32 s_point32_zero(void)
 bool s_point32_is_zero(const Point32 *p)
 {
     s_assert(p != NULL);
-    return (p->x == 0.f) && (p->y == 0.f);
+    return s_approximately_f32(p->x, 0.f, POINT32_ZERO_EPSILON) &&
+           s_approximately_f32(p->y, 0.f, POINT32_ZERO_EPSILON);
 }
 
 void s_point32_zero_out(Point32 *p)

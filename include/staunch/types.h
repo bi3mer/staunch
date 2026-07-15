@@ -21,4 +21,7 @@ typedef size_t st;
 
 #define MAX_U8 255
 
+#define POINT64_ZERO_EPSILON 1e-9
+#define POINT32_ZERO_EPSILON 1e-6f
+
 #endif // _STAUNCH_TYPES_
